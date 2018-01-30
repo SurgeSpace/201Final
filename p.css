@@ -10,29 +10,18 @@ header {
   text-align: center;
 }
 
-table {
-  color: #333;
-  font-family: Helvetica, Arial, sans-serif;
-  border-spacing: 5px;
-  border-collapse: separate;
-  left: 26%;
-  z-index: 2;
-  top: 40px;
-  position: absolute;
-}
-
 div {
   position: relative;
 }
 
 section {
-  background-color: lightgray;
+  /* background-color: lightgray; */
   position: absolute;
   z-index: 1;
-  width: 100px;
+  width: 120px;
   height: 590px;
   top: 40px;
-  right: 27%;
+  right: 22%;
   border-radius: 5px;
 }
 
@@ -46,66 +35,94 @@ td {
 
 ul {
   list-style: none;
+  padding-left: 10px;
+}
+
+ul li {
+  padding-bottom: 70px;
+  padding-top: 10px;
+  color: #ffe400;
+}
+
+ul li:nth-child(4) {
+  padding-top: 125px;
+  padding-bottom: 0px;
+  color: white;
+}
+
+ul li ul {
+  padding: 5px 0px 0px 0px;
 }
 
 .color {
   color: white;
 }
-
-.dev {
-  font-size: 80px;
-}
-
 header p {
   display: inline-block;
   font-family: 'Nunito', sans-serif;
   font-size: 72px;
   color: #ffe400;
   position: relative;
-  margin: 0 auto;
-  opacity: 0.0;
-  animation: port 3s 1 forwards;
-  -webkit-animation: port 3s 1 forwards;
+  margin: 0px;
   top: 30px;
-  right: 6%;
+  text-align: center;
 }
 
-header p:nth-of-type(2){
+table {
+  color: #333;
+  font-family: Helvetica, Arial, sans-serif;
+  border-spacing: 5px;
+  border-collapse: separate;
+  left: 30.5%;
+  z-index: 2;
+  top: 40px;
+  position: absolute;
+}
+
+table td {
+  font-family: 'Nunito', sans-serif;
+  margin: 0 auto;
+  opacity: 0.0;
+  animation: port 6s 1 forwards;
+  -webkit-animation: port 3s 1 forwards;
+}
+
+table td:nth-of-type(2){
   animation-delay: 0.1s;
   -webkit-animation-delay: 0.1s;
 }
 
-header p:nth-of-type(3){
+table td:nth-of-type(3){
   animation-delay: 0.2s;
   -webkit-animation-delay: 0.2s;
 }
 
-header p:nth-of-type(4){
+table td:nth-of-type(4){
   animation-delay: 0.3s;
   -webkit-animation-delay: 0.3s;
 }
 
-header p:nth-of-type(5){
+table td:nth-of-type(5){
   animation-delay: 0.4s;
   -webkit-animation-delay: 0.4s;
 }
 
-header p:nth-of-type(6){
+table td:nth-of-type(6){
   animation-delay: 0.5s;
   -webkit-animation-delay: 0.5s;
 }
 
-header p:nth-of-type(7){
+table td:nth-of-type(7){
   animation-delay: 0.6s;
   -webkit-animation-delay: 0.6s;
 }
 
-header p:nth-of-type(8){
+table td:nth-of-type(8){
   animation-delay: 0.7s;
   -webkit-animation-delay: 0.7s;
 }
 
-header p:nth-of-type(9){
+table td:nth-of-type(9){
   animation-delay: 0.8s;
   -webkit-animation-delay: 0.8s;
 }
