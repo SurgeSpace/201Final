@@ -89,7 +89,7 @@ function updateNumbers(event){
   console.log(clickCell);
   gameNumbers[clickCell] = gameNumbers[clickCell] + 1;
   clearAndCheck();
-  // updateNeighbors();
+  //updateNeighbors();
 }
 
 // var affectedCells = [];
@@ -97,14 +97,15 @@ function updateNumbers(event){
 function clearAndCheck(){
   for(var i in gameNumbers){
     if(gameNumbers[i] > 3){
-      event.target.style.display = 'none';
-      gameNumbers[i] = 0;
+      var currentIndex = gameNumbers[i];
+      currentIndex.style.backgroundColor = 'green';
+      gameNumbers[i] = '';
       updateNeighbors();
     }
   }
 }
 
-function updateNeighbors(){
+function updateNeighbors() {
   //code for 1st cell
   if(clickCell === 0){
     rightCell();
@@ -165,6 +166,7 @@ function updateNeighbors(){
     bottomCell();
     console.log('i');
   }
+  clearAndCheck();
   console.log(gameNumbers);
 }
 
