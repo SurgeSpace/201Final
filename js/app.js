@@ -1,13 +1,17 @@
 'use strict';
 
 var game = document.getElementById('gameTable');
-var numbers = document.getElementById('numberTable');
+// var numbers = document.getElementById('numberTable');
 
-var gameSize = 5;
+var gameSize = 3;
+
+var topIndex = parseInt(gameSize - 1);
 
 var tableTotal = 0;
 
 var gameNumbers = [];
+
+var gameIndex = 0;
 
 var cellNumber = -1;
 
@@ -16,7 +20,6 @@ var rightCells = [];
 var bottomCells = [];
 var leftCells = [];
 
-var rowLength = parseInt(gameSize);
 var clickCell = 0;
 
 function randomNumber() {
@@ -39,31 +42,19 @@ function makeGameTable(){
     }
     game.appendChild(trEl);
   }
-
+  gameIndex =  parseInt(gameNumbers.length) - 1;
+  console.log(gameIndex);
   console.log(tableTotal);
-  // console.log(gameNumbers);
+  console.log(gameNumbers);
   if(tableTotal > (gameSize * gameSize * 2)){
     location.reload();
-  }
-  makeNumberTable();
-}
-
-function makeNumberTable(){
-  for(var i = 0; i < gameSize; i++){
-    var trEl = document.createElement('tr');
-    for(var j = 0; j < gameSize; j++){
-      var tdEl = document.createElement('td');
-      tdEl.textContent = gameNumbers[j];
-      trEl.appendChild(tdEl);
-    }
-    numbers.appendChild(trEl);
   }
 }
 
 function edgeCells() {
   var edge = 0;
   topCells.push(edge);
-  for(var i = 0; i < gameSize - 1; i++){
+  for(var i = 0; i < topIndex; i++){
     edge++;
     topCells.push(edge);
   }
@@ -98,13 +89,15 @@ function updateNumbers(event){
   console.log(clickCell);
   gameNumbers[clickCell] = gameNumbers[clickCell] + 1;
   clearAndCheck();
-  console.log(gameNumbers);
+  // updateNeighbors();
 }
+
+// var affectedCells = [];
 
 function clearAndCheck(){
   for(var i in gameNumbers){
     if(gameNumbers[i] > 3){
-      event.target.style.backgroundColor = 'green';
+      event.target.style.display = 'none';
       gameNumbers[i] = 0;
       updateNeighbors();
     }
@@ -112,51 +105,84 @@ function clearAndCheck(){
 }
 
 function updateNeighbors(){
-  console.log(clickCell);
+  //code for 1st cell
   if(clickCell === 0){
-    gameNumbers[clickCell + 1] = gameNumbers[clickCell + 1] + 1;
-    gameNumbers[clickCell + rowLength] = gameNumbers[clickCell + rowLength] + 1;
+    rightCell();
+    bottomCell();
+    console.log('1st');
   }
-  else if(clickCell === rowLength){
-    gameNumbers[clickCell - 1] = gameNumbers[clickCell - 1] + 1;
-    gameNumbers[clickCell + rowLength] = gameNumbers[clickCell + rowLength] + 1;
+  //code for top right cell
+  else if(clickCell === topIndex){
+    leftCell();
+    bottomCell();
+    console.log('topR');
   }
-  else if(clickCell === bottomCells[(rowLength * rowLength) - (rowLength)]){
-    gameNumbers[clickCell + 1] = gameNumbers[clickCell + 1] + 1;
-    gameNumbers[clickCell - rowLength] = gameNumbers[clickCell - rowLength] + 1;
+  //code for bottom left cell
+  else if(clickCell === (gameIndex - (gameSize - 1))){
+    rightCell();
+    topCell();
+    console.log('botL');
   }
-  else if(clickCell === rowLength * rowLength){
-    gameNumbers[clickCell - 1] = gameNumbers[clickCell - 1] + 1;
-    gameNumbers[clickCell - rowLength] = gameNumbers[clickCell - rowLength] + 1;
+  //code for last cell
+  else if(clickCell === gameIndex){
+    leftCell();
+    topCell();
+    console.log('last');
   }
+  //code for left edge interior cells
   else if(leftCells.includes(clickCell)){
-    gameNumbers[clickCell + 1] = gameNumbers[clickCell + 1] + 1;
-    gameNumbers[clickCell + rowLength] = gameNumbers[clickCell + rowLength] + 1;
-    gameNumbers[clickCell - rowLength] = gameNumbers[clickCell - rowLength] + 1;
+    rightCell();
+    topCell();
+    bottomCell();
+    console.log('lei');
   }
+  //code for right edge interior cells
   else if(rightCells.includes(clickCell)){
-    gameNumbers[clickCell - 1] = gameNumbers[clickCell - 1] + 1;
-    gameNumbers[clickCell + rowLength] = gameNumbers[clickCell + rowLength] + 1;
-    gameNumbers[clickCell - rowLength] = gameNumbers[clickCell - rowLength] + 1;
+    leftCell();
+    topCell();
+    bottomCell();
+    console.log('rei');
   }
+  //code for top interior cells
   else if(topCells.includes(clickCell)){
-    gameNumbers[clickCell + 1] = gameNumbers[clickCell + 1] + 1;
-    gameNumbers[clickCell - 1] = gameNumbers[clickCell - 1] + 1;
-    gameNumbers[clickCell + rowLength] = gameNumbers[clickCell + rowLength] + 1;
+    rightCell();
+    leftCell();
+    bottomCell();
+    console.log('ti');
   }
+  //code for bottom interior cells
   else if(bottomCells.includes(clickCell)){ console.log(clickCell);
-    gameNumbers[clickCell + 1] = gameNumbers[clickCell + 1] + 1;
-    gameNumbers[clickCell - 1] = gameNumbers[clickCell - 1] + 1;
-    gameNumbers[clickCell - rowLength] = gameNumbers[clickCell - rowLength] + 1;
+    rightCell();
+    leftCell();
+    topCell();
+    console.log('bi');
   }
+  //code for all interior cells
   else {
-    gameNumbers[clickCell + 1] = gameNumbers[clickCell + 1] + 1;
-    gameNumbers[clickCell - 1] = gameNumbers[clickCell - 1] + 1;
-    gameNumbers[clickCell + rowLength] = gameNumbers[clickCell + rowLength] + 1;
-    gameNumbers[clickCell - rowLength] = gameNumbers[clickCell - rowLength] + 1;
+    rightCell();
+    leftCell();
+    topCell();
+    bottomCell();
+    console.log('i');
   }
-  clearAndCheck();
+  console.log(gameNumbers);
 }
+
+function rightCell(){
+  gameNumbers[clickCell + 1] = gameNumbers[clickCell + 1] + 1;
+  console.log(clickCell);
+  console.log(clickCell + 1);
+}
+function leftCell(){
+  gameNumbers[clickCell - 1] = gameNumbers[clickCell - 1] + 1;
+}
+function topCell(){
+  gameNumbers[clickCell - gameSize] = gameNumbers[clickCell - gameSize] + 1;
+}
+function bottomCell(){
+  gameNumbers[clickCell + gameSize] = gameNumbers[clickCell + gameSize] + 1;
+}
+
 
 game.addEventListener('click', updateNumbers);
 
