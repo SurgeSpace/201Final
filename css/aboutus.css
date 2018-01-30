@@ -7,6 +7,7 @@ body {
 }
 /* about-us specific css */
 #about-us {
+  margin-top:20px;
   text-align: center;
   color: white;
   font-size: 50px;
@@ -17,24 +18,24 @@ body {
 }
 #section1 {
   position: absolute;
-  left: 20%;
-  top: 80px;
+  left: 25%;
+  top: 60px;
 }
 #section2 {
   position: absolute;
-  right: 20%;
-  top: 80px;
+  right: 25%;
+  top: 60px;
 }
 #section3 {
   position: absolute;
-  top: 400px;
-  left: 20%;
+  top: 380px;
+  left: 25%;
 }
 #section4 {
   position: absolute;
 
-  top: 400px;
-  right: 20%;
+  top: 380px;
+  right: 25%;
 }
 .card-container {
   cursor: pointer;
@@ -72,6 +73,10 @@ body {
 
 #about-us-footer {
   text-align: center;
+  position: absolute;
+  top: 770px;
+  left: 35%;
+
 }
 
 .navbutton {
