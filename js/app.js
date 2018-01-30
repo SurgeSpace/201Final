@@ -95,7 +95,6 @@ function updateNumbers(event){
   clickTracker();
   gameNumbers[clickCell] = gameNumbers[clickCell] + 1;
   clearAndCheck();
-
 }
 function clickTracker(){
   clicksRemaining = clicksRemaining - 1;
@@ -127,7 +126,9 @@ function clearAndCheck(){
     }
   }
 }
+
 function updateNeighbors(){
+
   //code for 1st cell
   if(clickCell === 0){
     rightCell();
@@ -188,6 +189,7 @@ function updateNeighbors(){
     bottomCell();
     console.log('i');
   }
+  clearAndCheck();
   console.log(gameNumbers);
   clearAndCheck();
   for(var i in clearedCells){
