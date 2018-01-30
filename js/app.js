@@ -1,8 +1,11 @@
 'use strict';
 
 var game = document.getElementById('gameTable');
+var scoreCell = document.getElementById('currentScore');
+var score = document.createElement('ul');
+scoreCell.appendChild(score);
 
-var gameSize = 5;
+var gameSize = 3;
 
 var topIndex = parseInt(gameSize - 1);
 
@@ -18,7 +21,10 @@ var clearedCells = [];
 
 var clicksRemaining = 0;
 
+var burstNumber = 3;
+
 var gameScore = 0;
+score.textContent = gameScore;
 
 var topCells = [];
 var rightCells = [];
@@ -28,7 +34,7 @@ var leftCells = [];
 var clickCell = 0;
 
 function randomNumber() {
-  return Math.floor(Math.random() * Math.floor(3) + 1);
+  return Math.floor(Math.random() * Math.floor(burstNumber) + 1);
 }
 
 function makeGameTable(){
@@ -66,13 +72,13 @@ function edgeCells() {
   rightCells.push(edge);
   for(var j = 1; j < gameSize; j++){
     edge = edge + gameSize;
-    rightCells.push(edge);    
+    rightCells.push(edge);
   }
   edge = 0;
   leftCells.push(edge);
   for(var k = 1; k < gameSize; k++){
     edge = edge + gameSize;
-    leftCells.push(edge);  
+    leftCells.push(edge);
   }
   bottomCells.push(edge);
   for(var l = 1; l < gameSize; l++){
@@ -95,48 +101,40 @@ function updateNumbers(event){
   clickTracker();
   gameNumbers[clickCell] = gameNumbers[clickCell] + 1;
   clearAndCheck();
-<<<<<<< HEAD
-  //updateNeighbors();
-=======
-
->>>>>>> 94dabd1f9a0c8ab11adf7e1d011e8edc0f3aa625
 }
+
 function clickTracker(){
   clicksRemaining = clicksRemaining - 1;
-} 
-
+}
 
 function clearAndCheck(){
   for(var i in gameNumbers){
-    if(gameNumbers[i] > 3){
+    if(gameNumbers[i] > burstNumber){
       clickCell = parseInt(i);
       clearedCells.push(i);
       var currentIndex = i;
       document.getElementById(currentIndex).style.visibility = 'hidden';
       gameNumbers[i] = 0;
       gameScore = gameScore + 100;
+      score.textContent = gameScore;
       updateNeighbors();
       if(clearedCells.length === gameNumbers.length){
-        var gameMsg = document.getElementById('gameMsg');
-        var winMsg = document.createElement('p');
-        winMsg.textContent = ('Congratulations!! You have beaten this level.  Are you ready to move to the next level?');
-        gameMsg.appendChild(winMsg);
+        // var gameMsg = document.getElementById('gameMsg');
+        // var winMsg = document.createElement('p');
+        // winMsg.textContent = ('Congratulations!! You have beaten this level.  Are you ready to move to the next level?');
+        // gameMsg.appendChild(winMsg);
       }
       if(clicksRemaining === 0 && clearedCells.length < gameNumbers.length){
-        var gameMsg = document.getElementById('gameMsg');
-        var lostMsg = document.createElement('p');
-        lostMsg.textContent = ('Sorry. You took too many clicks and lost this game.');
-        gameMsg.appendChild(lostMsg);
+        // var gameMsg = document.getElementById('gameMsg');
+        // var lostMsg = document.createElement('p');
+        // lostMsg.textContent = ('Sorry. You took too many clicks and lost this game.');
+        // gameMsg.appendChild(lostMsg);
       }
     }
   }
 }
-<<<<<<< HEAD
 
-function updateNeighbors() {
-=======
 function updateNeighbors(){
->>>>>>> 94dabd1f9a0c8ab11adf7e1d011e8edc0f3aa625
   //code for 1st cell
   if(clickCell === 0){
     rightCell();
@@ -224,5 +222,12 @@ function bottomCell(){
 
 game.addEventListener('click', updateNumbers);
 
-makeGameTable();
-edgeCells();
+function gameOne() {
+  gameSize = 3;
+  clicksRemaining = 8;
+  burstNumber = 3;
+  makeGameTable();
+  edgeCells();
+}
+
+gameOne();
