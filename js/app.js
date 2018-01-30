@@ -1,7 +1,6 @@
 'use strict';
 
 var game = document.getElementById('gameTable');
-// var numbers = document.getElementById('numberTable');
 
 var gameSize = 5;
 
@@ -16,6 +15,10 @@ var gameIndex = 0;
 var cellNumber = -1;
 
 var clearedCells = [];
+
+var clicksRemaining = 0;
+
+var gameScore = 0;
 
 var topCells = [];
 var rightCells = [];
@@ -89,12 +92,14 @@ function edgeCells() {
 function updateNumbers(event){
   clickCell = parseInt(event.target.id);
   console.log(clickCell);
+  clickTracker();
   gameNumbers[clickCell] = gameNumbers[clickCell] + 1;
   clearAndCheck();
-  //updateNeighbors();
 }
+function clickTracker(){
+  clicksRemaining = clicksRemaining - 1;
+} 
 
-// var affectedCells = [];
 
 function clearAndCheck(){
   for(var i in gameNumbers){
@@ -102,14 +107,28 @@ function clearAndCheck(){
       clickCell = parseInt(i);
       clearedCells.push(i);
       var currentIndex = i;
-      document.getElementById(currentIndex).style.display = 'none';
+      document.getElementById(currentIndex).style.visibility = 'hidden';
       gameNumbers[i] = 0;
+      gameScore = gameScore + 100;
       updateNeighbors();
+      if(clearedCells.length === gameNumbers.length){
+        var gameMsg = document.getElementById('gameMsg');
+        var winMsg = document.createElement('p');
+        winMsg.textContent = ('Congratulations!! You have beaten this level.  Are you ready to move to the next level?');
+        gameMsg.appendChild(winMsg);
+      }
+      if(clicksRemaining === 0 && clearedCells.length < gameNumbers.length){
+        var gameMsg = document.getElementById('gameMsg');
+        var lostMsg = document.createElement('p');
+        lostMsg.textContent = ('Sorry. You took too many clicks and lost this game.');
+        gameMsg.appendChild(lostMsg);
+      }
     }
   }
 }
 
-function updateNeighbors() {
+function updateNeighbors(){
+
   //code for 1st cell
   if(clickCell === 0){
     rightCell();
