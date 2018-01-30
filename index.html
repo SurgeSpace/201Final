@@ -13,25 +13,28 @@
   <header></header>
   <section>
   <div>
-      <p>&lt;</p>
-      <p>D</p>
-      <p>E</p>
-      <p>V</p>
-      <p>&gt;</p>
+      <p class="dev">&lt;</p>
+      <p class="dev">d</p>
+      <p class="dev">e</p>
+      <p class="dev">v</p>
+      <p class="dev">&gt;</p>
       <p class="color">P</p>
       <p class="color">O</p>
       <p class="color">P</p>
+      <p class="color">!</p>
   </div>
+    <p id="welcome"></p>
     <form id="login" action="">
-      FIRST NAME:<br>
-      <input type="text" name="firstname" value="">
-      <br>LAST NAME:<br>
-      <input type="text" name="lastname" value="">
+      <p id="fText">FIRST NAME</p><br>
+      <input id="firstName" type="text" name="firstName" required>
+      <br><p id="lText">LAST NAME<br></p>
+      <input id="lastName" type="text" name="lastName" onClick="store()" required>
       <br><br>
-      <button class="button"><span>Let's Play</span></button>
+      <button type= "submit" id="button" onClick="store()"><a href="html/game.html">Let's Play</a></button>
     </form> 
   </section>
   <footer>
   </footer>
 </body>
+<script src="js/index.js"></script>
 </html>

@@ -1,7 +1,8 @@
 body {
   margin: 0;
   padding: 0;
-  background: linear-gradient(to bottom right, rgb(77, 71, 71), rgb(194, 194, 194));
+  height:  850px;
+  background: linear-gradient(to bottom right, #272727, #e9e9e9);
   font-family: 'Nunito', sans-serif; 
 }
 
@@ -11,12 +12,15 @@ body {
   color: white;
 }
 
+.dev {
+  font-size: 80px;
+}
+
 div p {
   display: inline-block;
   font-family: 'Nunito', sans-serif;
   font-size: 72px;
-  color: #f4511e;
-  text-transform: uppercase;
+  color: #ffe400;
   position: relative;
   margin: 0 auto;
   opacity: 0.0;
@@ -64,11 +68,6 @@ div p:nth-of-type(9){
   -webkit-animation-delay: 0.8s;
 }
 
-div:hover p {
-  animation: reset 1s 1;
-  -webkit-animation: reset 1s 1 ;
-}
-
 @keyframes port {
   0%{
     transform: rotateY(90deg) translateY(25%);
@@ -100,7 +99,6 @@ div:hover p {
   0%{}
   100%{}
 }
-
 /* end title animation */
 
 section {
@@ -113,7 +111,7 @@ section {
 form {
   text-align: center;
   color: white;
-  padding: 30px;
+  padding: 0px;
 }
 
 /* button hover animation */
@@ -127,44 +125,61 @@ input{
   color: white;
 }
 
-
-.button {
-  border-radius: 4px;
-  background-color: #f4511e;
-  border: none;
+#welcome {
   color: #FFFFFF;
   text-align: center;
   font-size: 28px;
-  padding: 20px;
+  padding-top: 40px;
+}
+
+#fText {
+  font-size: 14px;
+  color: lightgray;
+}
+
+#lText {
+  font-size: 14px;
+  color: lightgray;
+}
+
+#button {
+  border-radius: 10px;
+  background-color: #ffe400;
+  border: none;
+  color: white;
+  text-align: center;
+  font-size: 28px;
+  padding: 10px;
   width: 200px;
   transition: all 0.5s;
   cursor: pointer;
   margin: 0px auto;
 }
 
-.button span {
+#button a {
   cursor: pointer;
   display: inline-block;
   position: relative;
-  transition: 2.0s;
+  transition: 1.0s;
+  text-decoration: none;
+  color: white;
 }
 
-.button span:after {
+#button a:after {
   content: '\00bb';
   position: absolute;
   opacity: 0;
   top: 0;
   right: -20px;
-  transition: 3.0s;
+  transition: 1.0s;
 }
 
-.button:hover span {
+#button:hover a {
   padding-right: 25px;
 }
 
-.button:hover span:after {
+#button:hover a:after {
   opacity: 1;
   right: 0;
 }
 /* end button animation */
-
