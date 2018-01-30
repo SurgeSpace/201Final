@@ -65,7 +65,7 @@ body {
 .card .back {
   background: white;
   color: #f4511e;
-  line-height: 150px;
+  line-height: 30px;
   text-align: center;
   transform: rotateY(180deg);
 }
