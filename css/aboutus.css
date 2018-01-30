@@ -1,0 +1,89 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 850px;
+  background: linear-gradient(to bottom right, rgb(77, 71, 71), rgb(194, 194, 194));
+  font-family: 'Nunito', sans-serif; 
+}
+/* about-us specific css */
+#about-us {
+  text-align: center;
+  color: white;
+  font-size: 50px;
+}
+#container {
+  position: relative;
+
+}
+#section1 {
+  position: absolute;
+  left: 20%;
+  top: 80px;
+}
+#section2 {
+  position: absolute;
+  right: 20%;
+  top: 80px;
+}
+#section3 {
+  position: absolute;
+  top: 400px;
+  left: 20%;
+}
+#section4 {
+  position: absolute;
+
+  top: 400px;
+  right: 20%;
+}
+.card-container {
+  cursor: pointer;
+  height: 300px;
+  perspective: 600px;
+  position: relative;
+  width: 300px;
+}
+.card {
+  height: 100%;
+  position: absolute;
+  transform-style: preserve-3d;
+  transition: all 1s ease-in-out;
+  width: 100%;
+}
+.card:hover {
+  transform: rotateY(180deg);
+}
+.card .side {
+  backface-visibility: hidden;
+  border-radius: 6px;
+  height: 100%;
+  position: absolute;
+  overflow: hidden;
+  width: 100%;
+}
+.card .back {
+  background: white;
+  color: #f4511e;
+  line-height: 150px;
+  text-align: center;
+  transform: rotateY(180deg);
+}
+
+
+#about-us-footer {
+  text-align: center;
+}
+
+.navbutton {
+  border-radius: 4px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 10px;
+  padding: 20px;
+  width: 100px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 0px auto;
+}
