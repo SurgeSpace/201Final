@@ -42,7 +42,7 @@ function makeGameTable(){
     }
     game.appendChild(trEl);
   }
-  gameIndex =  parseInt(gameNumbers.length) - 1;
+  gameIndex = parseInt(gameNumbers.length) - 1;
   console.log(gameIndex);
   console.log(tableTotal);
   console.log(gameNumbers);
