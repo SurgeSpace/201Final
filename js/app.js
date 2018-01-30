@@ -1,6 +1,7 @@
 'use strict';
 
 var game = document.getElementById('gameTable');
+var numbers = document.getElementById('numberTable');
 
 var gameSize = 5;
 
@@ -38,10 +39,24 @@ function makeGameTable(){
     }
     game.appendChild(trEl);
   }
+
   console.log(tableTotal);
-  console.log(gameNumbers);
+  // console.log(gameNumbers);
   if(tableTotal > (gameSize * gameSize * 2)){
     location.reload();
+  }
+  makeNumberTable();
+}
+
+function makeNumberTable(){
+  for(var i = 0; i < gameSize; i++){
+    var trEl = document.createElement('tr');
+    for(var j = 0; j < gameSize; j++){
+      var tdEl = document.createElement('td');
+      tdEl.textContent = gameNumbers[j];
+      trEl.appendChild(tdEl);
+    }
+    numbers.appendChild(trEl);
   }
 }
 
@@ -80,6 +95,7 @@ function edgeCells() {
 
 function updateNumbers(event){
   clickCell = parseInt(event.target.id);
+  console.log(clickCell);
   gameNumbers[clickCell] = gameNumbers[clickCell] + 1;
   clearAndCheck();
   console.log(gameNumbers);
