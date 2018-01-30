@@ -3,7 +3,7 @@
 var game = document.getElementById('gameTable');
 // var numbers = document.getElementById('numberTable');
 
-var gameSize = 3;
+var gameSize = 5;
 
 var topIndex = parseInt(gameSize - 1);
 
@@ -14,6 +14,8 @@ var gameNumbers = [];
 var gameIndex = 0;
 
 var cellNumber = -1;
+
+var clearedCells = [];
 
 var topCells = [];
 var rightCells = [];
@@ -97,9 +99,11 @@ function updateNumbers(event){
 function clearAndCheck(){
   for(var i in gameNumbers){
     if(gameNumbers[i] > 3){
-      var currentIndex = gameNumbers[i];
-      currentIndex.style.backgroundColor = 'green';
-      gameNumbers[i] = '';
+      clickCell = parseInt(i);
+      clearedCells.push(i);
+      var currentIndex = i;
+      document.getElementById(currentIndex).style.display = 'none';
+      gameNumbers[i] = 0;
       updateNeighbors();
     }
   }
@@ -168,6 +172,11 @@ function updateNeighbors() {
   }
   clearAndCheck();
   console.log(gameNumbers);
+  clearAndCheck();
+  for(var i in clearedCells){
+    console.log(clearedCells);
+    gameNumbers[clearedCells[i]] = 0;
+  }
 }
 
 function rightCell(){
