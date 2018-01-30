@@ -1,9 +1,8 @@
 'use strict';
 
 var game = document.getElementById('gameTable');
-// var numbers = document.getElementById('numberTable');
 
-var gameSize = 3;
+var gameSize = 5;
 
 var topIndex = parseInt(gameSize - 1);
 
@@ -14,6 +13,12 @@ var gameNumbers = [];
 var gameIndex = 0;
 
 var cellNumber = -1;
+
+var clearedCells = [];
+
+var clicksRemaining = 0;
+
+var gameScore = 0;
 
 var topCells = [];
 var rightCells = [];
@@ -42,7 +47,7 @@ function makeGameTable(){
     }
     game.appendChild(trEl);
   }
-  gameIndex =  parseInt(gameNumbers.length) - 1;
+  gameIndex = parseInt(gameNumbers.length) - 1;
   console.log(gameIndex);
   console.log(tableTotal);
   console.log(gameNumbers);
@@ -87,23 +92,41 @@ function edgeCells() {
 function updateNumbers(event){
   clickCell = parseInt(event.target.id);
   console.log(clickCell);
+  clickTracker();
   gameNumbers[clickCell] = gameNumbers[clickCell] + 1;
   clearAndCheck();
-  // updateNeighbors();
-}
 
-// var affectedCells = [];
+}
+function clickTracker(){
+  clicksRemaining = clicksRemaining - 1;
+} 
+
 
 function clearAndCheck(){
   for(var i in gameNumbers){
     if(gameNumbers[i] > 3){
-      event.target.style.display = 'none';
+      clickCell = parseInt(i);
+      clearedCells.push(i);
+      var currentIndex = i;
+      document.getElementById(currentIndex).style.visibility = 'hidden';
       gameNumbers[i] = 0;
+      gameScore = gameScore + 100;
       updateNeighbors();
+      if(clearedCells.length === gameNumbers.length){
+        var gameMsg = document.getElementById('gameMsg');
+        var winMsg = document.createElement('p');
+        winMsg.textContent = ('Congratulations!! You have beaten this level.  Are you ready to move to the next level?');
+        gameMsg.appendChild(winMsg);
+      }
+      if(clicksRemaining === 0 && clearedCells.length < gameNumbers.length){
+        var gameMsg = document.getElementById('gameMsg');
+        var lostMsg = document.createElement('p');
+        lostMsg.textContent = ('Sorry. You took too many clicks and lost this game.');
+        gameMsg.appendChild(lostMsg);
+      }
     }
   }
 }
-
 function updateNeighbors(){
   //code for 1st cell
   if(clickCell === 0){
@@ -166,6 +189,11 @@ function updateNeighbors(){
     console.log('i');
   }
   console.log(gameNumbers);
+  clearAndCheck();
+  for(var i in clearedCells){
+    console.log(clearedCells);
+    gameNumbers[clearedCells[i]] = 0;
+  }
 }
 
 function rightCell(){
