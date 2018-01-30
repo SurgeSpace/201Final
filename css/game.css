@@ -1,3 +1,7 @@
+section {
+    display: inline-block;
+}
+
 button {
     width: 100px;
     height: 100px;
@@ -5,6 +9,14 @@ button {
     background-color: blue;
 }
 
+#numberTable {
+    width: 300px;
+    height: 300px;
+    color: black;
+    border: 2px solid green;
+}
+
 td {
-    color: white;
+    border: 1px solid red;
+    color: black;
 }
