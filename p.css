@@ -9,15 +9,25 @@ body {
 table {
   color: #333;
   font-family: Helvetica, Arial, sans-serif;
-  width: 640px; 
-  border-spacing: 15px;
+  border-spacing: 5px;
   border-collapse: separate;
-  box-shadow: 1px 2px 3px #ffe400;
+  float: left;
+  margin-left: 24%;
 }
 
+section {
+  background-color: lightgray;
+  float: right;
+  width: 12%;
+  height: 70%;
+  margin-right: 25%;
+  border-radius: 20px;
+}
 
 td {  
-  background: #FAFAFA;
+  background: lightgray;
   text-align: center;
-  padding: 53px 30px;
+  padding: 47px 30px;
+  border-radius: 500px;
+  /* box-shadow: 3px 4px 20px #ffe400; */
 }
