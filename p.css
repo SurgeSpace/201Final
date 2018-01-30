@@ -6,22 +6,34 @@ body {
   font-family: 'Nunito', sans-serif; 
 }
 
+header {
+  text-align: center;
+}
+
 table {
   color: #333;
   font-family: Helvetica, Arial, sans-serif;
   border-spacing: 5px;
   border-collapse: separate;
-  float: left;
-  margin-left: 24%;
+  left: 26%;
+  z-index: 2;
+  top: 40px;
+  position: absolute;
+}
+
+div {
+  position: relative;
 }
 
 section {
   background-color: lightgray;
-  float: right;
-  width: 12%;
-  height: 70%;
-  margin-right: 25%;
-  border-radius: 20px;
+  position: absolute;
+  z-index: 1;
+  width: 100px;
+  height: 590px;
+  top: 40px;
+  right: 27%;
+  border-radius: 5px;
 }
 
 td {  
@@ -30,4 +42,102 @@ td {
   padding: 47px 30px;
   border-radius: 500px;
   /* box-shadow: 3px 4px 20px #ffe400; */
+}
+
+ul {
+  list-style: none;
+}
+
+.color {
+  color: white;
+}
+
+.dev {
+  font-size: 80px;
+}
+
+header p {
+  display: inline-block;
+  font-family: 'Nunito', sans-serif;
+  font-size: 72px;
+  color: #ffe400;
+  position: relative;
+  margin: 0 auto;
+  opacity: 0.0;
+  animation: port 3s 1 forwards;
+  -webkit-animation: port 3s 1 forwards;
+  top: 30px;
+  right: 6%;
+}
+
+header p:nth-of-type(2){
+  animation-delay: 0.1s;
+  -webkit-animation-delay: 0.1s;
+}
+
+header p:nth-of-type(3){
+  animation-delay: 0.2s;
+  -webkit-animation-delay: 0.2s;
+}
+
+header p:nth-of-type(4){
+  animation-delay: 0.3s;
+  -webkit-animation-delay: 0.3s;
+}
+
+header p:nth-of-type(5){
+  animation-delay: 0.4s;
+  -webkit-animation-delay: 0.4s;
+}
+
+header p:nth-of-type(6){
+  animation-delay: 0.5s;
+  -webkit-animation-delay: 0.5s;
+}
+
+header p:nth-of-type(7){
+  animation-delay: 0.6s;
+  -webkit-animation-delay: 0.6s;
+}
+
+header p:nth-of-type(8){
+  animation-delay: 0.7s;
+  -webkit-animation-delay: 0.7s;
+}
+
+header p:nth-of-type(9){
+  animation-delay: 0.8s;
+  -webkit-animation-delay: 0.8s;
+}
+
+@keyframes port {
+  0%{
+    transform: rotateY(90deg) translateY(25%);
+    opacity: 0.0;
+  }
+  100%{
+    transform: rotateY(0deg) translateY(0%);
+    opacity: 1.0;
+  }
+}
+
+@-webkit-keyframes port {
+  0%{
+   -webkit-transform: rotateY(90deg) translateY(25%);
+    opacity: 0.0;
+  }
+  100%{
+    -webkit-transform: rotateY(0deg) translateY(0%);
+    opacity: 1.0;
+  }
+}
+
+@keyframes reset {
+  0%{}
+  100%{}
+}
+
+@-webkit-keyframes reset {
+  0%{}
+  100%{}
 }
