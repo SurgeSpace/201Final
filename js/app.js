@@ -221,7 +221,7 @@ function updateNeighbors(){
     console.log('i');
   }
   clearAndCheck();
-  
+
   console.log('gameNumbers' + gameNumbers);
   clearAndCheck();
   for(var i in clearedCells){
