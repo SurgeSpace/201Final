@@ -15,7 +15,9 @@ body {
 .dev {
   font-size: 80px;
 }
-
+div {
+  margin-top: 10px;
+}
 div p {
   display: inline-block;
   font-family: 'Nunito', sans-serif;
@@ -133,12 +135,8 @@ input{
 }
 
 #fText {
-  font-size: 14px;
-  color: lightgray;
-}
-
-#lText {
-  font-size: 14px;
+  font-size: 18px;
+  padding-bottom: 0px;
   color: lightgray;
 }
 
