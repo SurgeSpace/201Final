@@ -5,7 +5,7 @@ body {
   background: linear-gradient(to bottom right, rgb(77, 71, 71), rgb(194, 194, 194));
   font-family: 'Nunito', sans-serif; 
 }
-/* about-us specific css */
+
 #about-us {
   margin-top:20px;
   text-align: center;
@@ -14,6 +14,8 @@ body {
 }
 #container {
   position: relative;
+  max-width: 90%;
+  margin: auto;
 
 }
 #section1 {
@@ -33,7 +35,6 @@ body {
 }
 #section4 {
   position: absolute;
-
   top: 380px;
   right: 25%;
 }
@@ -74,13 +75,11 @@ body {
   font-size: 15px;
 }
 
-
 #about-us-footer {
   text-align: center;
   position: absolute;
   top: 770px;
   left: 35%;
-
 }
 
 .navbutton {
