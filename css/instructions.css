@@ -1,0 +1,49 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 850px;
+  background: linear-gradient(to bottom right, rgb(77, 71, 71), rgb(194, 194, 194));
+  font-family: 'Nunito', sans-serif; 
+  text-align: center;
+}
+
+header {
+  text-align: center;
+  font-size: 70px;
+  color: white;
+}
+
+.instruction-section-titles {
+font-size: 30px;
+color:  #ffe400;
+text-align: center;
+padding-top: 5px;
+padding-bottom: 5px;
+}
+
+li {
+ list-style-type: none;
+ text-align: center;
+ font-size: 25px;
+
+}
+
+div {
+  background: rgba(0, 0, 0, .5);
+  max-width: 70%;
+  margin: auto;
+  margin-top: 30px;
+  color: white; 
+}
+
+button {
+  border-radius: 4px;
+  background-color: #ffe400;
+  border: none;
+  color: white; 
+  text-align: center;
+  font-size: 20px;
+  padding: 20px;
+  width: 150px;
+  margin: 0px auto;
+}
