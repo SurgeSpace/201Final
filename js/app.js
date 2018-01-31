@@ -26,6 +26,9 @@ var burstNumber = 3;
 var gameScore = 0;
 score.textContent = gameScore;
 
+var lastGamePlayed;
+
+
 var topCells = [];
 var rightCells = [];
 var bottomCells = [];
@@ -118,17 +121,28 @@ function clearAndCheck(){
       gameScore = gameScore + 100;
       score.textContent = gameScore;
       updateNeighbors();
+      console.log('clearedCells length ' + clearedCells.length);
+
       if(clearedCells.length === gameNumbers.length){
         // var gameMsg = document.getElementById('gameMsg');
         // var winMsg = document.createElement('p');
         // winMsg.textContent = ('Congratulations!! You have beaten this level.  Are you ready to move to the next level?');
         // gameMsg.appendChild(winMsg);
+        lastGamePlayed += 1;
+        clearedCells = [];
+        localStorage.lastGame = JSON.stringify(lastGamePlayed);
+        localStorage.currentScore = JSON.stringify(gameScore);
+        console.log('win');
+        startGame();
       }
+
       if(clicksRemaining === 0 && clearedCells.length < gameNumbers.length){
         // var gameMsg = document.getElementById('gameMsg');
         // var lostMsg = document.createElement('p');
         // lostMsg.textContent = ('Sorry. You took too many clicks and lost this game.');
         // gameMsg.appendChild(lostMsg);
+        console.log('lose');
+        startGame();
       }
     }
   }
@@ -196,18 +210,17 @@ function updateNeighbors(){
     console.log('i');
   }
   clearAndCheck();
-  console.log(gameNumbers);
+  console.log('gameNumbers' + gameNumbers);
   clearAndCheck();
   for(var i in clearedCells){
-    console.log(clearedCells);
+    console.log('clearedCells ' + clearedCells);
     gameNumbers[clearedCells[i]] = 0;
   }
 }
 
 function rightCell(){
   gameNumbers[clickCell + 1] = gameNumbers[clickCell + 1] + 1;
-  console.log(clickCell);
-  console.log(clickCell + 1);
+  console.log('clickCell' + clickCell);
 }
 function leftCell(){
   gameNumbers[clickCell - 1] = gameNumbers[clickCell - 1] + 1;
@@ -222,12 +235,75 @@ function bottomCell(){
 
 game.addEventListener('click', updateNumbers);
 
+function winnerWinnerChickenDinner(){
+
+  if(lastGamePlayed === 1) {
+    gameTwo();
+  }
+  if(lastGamePlayed === 2) {
+    gameThree();
+  }
+  // if(lastGamePlayed[0]=gameThree) {
+  //   gameFour();
+  // }
+  // if(lastGamePlayed[0]=gameFour) {
+  //   gameFive();
+  // }
+  // if(lastGamePlayed[0]=gameFive) {
+  //   gameSix();
+  // }
+  // if(lastGamePlayed[0]=gameSix) {
+  //   gameSeven();
+  // }
+  // if(lastGamePlayed[0]=gameSeven) {
+  //   gameEight();
+  // }
+  // if(lastGamePlayed[0]=gameEight) {
+  //   gameNine();
+  // }
+  // if(lastGamePlayed[0]=gameNine) {
+  //   gameNine();
+  // }
+}
+
 function gameOne() {
   gameSize = 3;
   clicksRemaining = 8;
   burstNumber = 3;
   makeGameTable();
   edgeCells();
+  lastGamePlayed = 0;
+  console.log('lastGamePlayed' + lastGamePlayed);
+}
+function gameTwo() {
+  gameSize = 4;
+  clicksRemaining = 10;
+  burstNumber = 3;
+  makeGameTable();
+  edgeCells();
+  lastGamePlayed = 1;
+}
+function gameThree() {
+  gameSize = 5;
+  clicksRemaining = 15;
+  burstNumber = 3;
+  makeGameTable();
+  edgeCells();
+  lastGamePlayed = 2;
 }
 
-gameOne();
+function startGame(){
+  if(localStorage.lastGame || localStorage.currentScore) {
+    lastGamePlayed = JSON.parse(localStorage.getItem('lastGame'));
+    console.log('last game ' + lastGamePlayed);
+    gameScore = JSON.parse(localStorage.getItem('currentScore'));
+    score.textContent = gameScore;
+    winnerWinnerChickenDinner();
+  } else {
+    console.log('newbie');
+    gameOne();
+  }
+}
+
+startGame();
+
