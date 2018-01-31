@@ -37,12 +37,67 @@ p {
   font-family: 'Nunito', sans-serif;
  }
 
+#footerStuff{
+  width: 100%;
+  text-align: center;
+  color:#ffe400;
+  font-size: 20px;
+  margin: auto;
+}
+
 #yourScore {
   width: 100%;
   text-align: center;
   color:#ffe400;
   font-size: 20px;
   margin: auto;
+}
+
+#restartGame {
+  width: 100%;
+  margin: auto;
+  text-align: center;
+}
+
+button{
+  border-radius: 10px;
+  background-color: #ffe400;
+  border: none;
+  color: rgb(70, 69, 69);
+  text-align: center;
+  font-size: 28px;
+  padding: 10px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 60px auto;
+}
+
+#button a {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 1.0s;
+  text-decoration: none;
+  color: white;
+}
+
+#button a:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 1.0s;
+}
+
+#button:hover a {
+  padding-right: 25px;
+}
+
+#button:hover a:after {
+  opacity: 1;
+  right: 0;
 }
 
 ul {
@@ -62,12 +117,6 @@ ul li:first-child {
  }
 ul li:nth-child(4) {
   color: white;
- }
- 
-button {  
-  background: lightgray;
-  padding: 48px 48px;
-  border-radius: 500px;
  }
  
 table {
