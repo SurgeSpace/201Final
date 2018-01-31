@@ -44,6 +44,9 @@ var leftCells = [];
 
 var clickCell = 0;
 
+var audio = new Audio('../media/pop.mp3');
+var audioLost = new Audio('../media/lostGame.mp3');
+
 function randomNumber() {
   return Math.floor(Math.random() * Math.floor(burstNumber) + 1);
 }
@@ -132,7 +135,7 @@ function clearAndCheck(){
       gameNumbers[i] = 0;
       gameScore = gameScore + 100;
       score.textContent = gameScore;
-      updateNeighbors();
+      setTimeout('updateNeighbors()', 100);
 
       if(clearedCells.length === gameNumbers.length){
         // var gameMsg = document.getElementById('gameMsg');
@@ -149,14 +152,17 @@ function clearAndCheck(){
         startGame();
       }
 
-      if(clicksRemaining === 0 && clearedCells.length < gameNumbers.length){
-        // var gameMsg = document.getElementById('gameMsg');
-        // var lostMsg = document.createElement('p');
-        // lostMsg.textContent = ('Sorry. You took too many clicks and lost this game.');
-        // gameMsg.appendChild(lostMsg);
+      if(clicksRemaining < 0){
+        var rmvTable = document.getElementById('gameTable');
+        rmvTable.parentNode.removeChild(rmvTable);
+        var gameMsg = document.getElementById('results');
+        var lostMsg = document.createElement('p');
+        lostMsg.textContent = ('Sorry. You took too many clicks and lost this game.');
+        gameMsg.appendChild(lostMsg);
+        audioLost.play();
         console.log('lose');
-        startGame();
       }
+      audio.play();
     }
   }
 }
