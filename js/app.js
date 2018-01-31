@@ -149,6 +149,7 @@ function clearAndCheck(){
 }
 
 function updateNeighbors(){
+
   //code for 1st cell
   if(clickCell === 0){
     rightCell();
@@ -210,6 +211,7 @@ function updateNeighbors(){
     console.log('i');
   }
   clearAndCheck();
+  
   console.log('gameNumbers' + gameNumbers);
   clearAndCheck();
   for(var i in clearedCells){
