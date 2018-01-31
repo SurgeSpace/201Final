@@ -9,7 +9,6 @@ body {
     
    header {
     text-align: center;
-    
    }
    
 p {
@@ -21,6 +20,7 @@ p {
     top: 30px;
     text-align: center;
    }
+
    #dev {
     color: #ffe400;
    }
@@ -28,40 +28,24 @@ p {
    #logo {
     color: white;
    }
-   
-   div {
-    position: relative;
-   }
-      
-   section {
-    position: absolute;
-    z-index: 1;
-    width: 120px;
-    height: 590px;
-    top: 70px;
-    right: 24%;
-    border-radius: 5px;
-   }
-   
+
    ul {
     list-style: none;
-    padding-left: 10px;
+    padding: 0px;
+    margin: 0px;
+    text-align: center;
    }
    
    ul li {
-    padding-bottom: 70px;
-    padding-top: 10px;
+    padding: 0px 30px;
+    display: inline-block;
     color: #ffe400;
    }
-   
-   ul li:nth-child(4) {
-    padding-top: 125px;
-    padding-bottom: 0px;
-    color: white;
+   ul li:first-child {
+     padding-right: 44px;
    }
-   
-   ul li ul {
-    padding: 5px 0px 0px 0px;
+   ul li:nth-child(4) {
+    color: white;
    }
    
    button {  
@@ -75,15 +59,14 @@ p {
     font-family: Helvetica, Arial, sans-serif;
     border-spacing: 4px;
     border-collapse: separate;
-    z-index: 2;
-    right: 100%;
-    position: absolute;
+    margin: 30px auto;
+    border-radius: 5px;
+
    }
    
    /* Game load animation */
    table td {
     font-family: ‘Nunito’, sans-serif;
-    margin: 0 auto;
     opacity: 0.0;
     animation: port 6s 1 forwards;
     -webkit-animation: port 3s 1 forwards;
@@ -164,3 +147,16 @@ p {
     }
    }
    /* game load animation end */
+
+
+footer {
+  text-align: center;
+  position:fixed;
+  left:0;
+  bottom:50px;
+  width: 100%;
+}
+
+footer p{
+  font-size: 24px;
+}
