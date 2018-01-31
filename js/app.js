@@ -1,9 +1,17 @@
 'use strict';
 
 var game = document.getElementById('gameTable');
+var clicksLeft = document.getElementById('clicksRemaining');
+var clickCounter = document.createElement('ul');
+clicksLeft.appendChild(clickCounter);
 var scoreCell = document.getElementById('currentScore');
 var score = document.createElement('ul');
 scoreCell.appendChild(score);
+var level = document.getElementById('level');
+var levelUp = document.createElement('ul');
+level.appendChild(levelUp);
+
+
 
 var gameSize = 3;
 
@@ -108,6 +116,7 @@ function updateNumbers(event){
 
 function clickTracker(){
   clicksRemaining = clicksRemaining - 1;
+  clickCounter.textContent = clicksRemaining;
 }
 
 function clearAndCheck(){
@@ -129,6 +138,7 @@ function clearAndCheck(){
         // winMsg.textContent = ('Congratulations!! You have beaten this level.  Are you ready to move to the next level?');
         // gameMsg.appendChild(winMsg);
         lastGamePlayed += 1;
+
         clearedCells = [];
         localStorage.lastGame = JSON.stringify(lastGamePlayed);
         localStorage.currentScore = JSON.stringify(gameScore);
@@ -271,27 +281,33 @@ function winnerWinnerChickenDinner(){
 function gameOne() {
   gameSize = 3;
   clicksRemaining = 8;
+  clickCounter.textContent = clicksRemaining;
   burstNumber = 3;
   makeGameTable();
   edgeCells();
   lastGamePlayed = 0;
+  levelUp.textContent = 1;
   console.log('lastGamePlayed' + lastGamePlayed);
 }
 function gameTwo() {
   gameSize = 4;
   clicksRemaining = 10;
+  clickCounter.textContent = clicksRemaining;
   burstNumber = 3;
   makeGameTable();
   edgeCells();
   lastGamePlayed = 1;
+  levelUp.textContent = 2;
 }
 function gameThree() {
   gameSize = 5;
   clicksRemaining = 15;
+  clickCounter.textContent = clicksRemaining;
   burstNumber = 3;
   makeGameTable();
   edgeCells();
   lastGamePlayed = 2;
+  levelUp.textContent = 3;
 }
 
 function startGame(){
