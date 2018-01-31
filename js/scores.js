@@ -18,7 +18,6 @@ function High (userName, level, scored) {
   High.users.push(this);
 }
 
-
 function createTable() {
   if(High.users.length > 5) {
     High.users.length === 5;
@@ -77,12 +76,13 @@ if(localStorage.previousHighScores){
 //new High(userName, userLevel, userScore);
 
 var userName = 'Mikey';
-var userLevel = 10;
+var userLevel = 9;
 var userScore = 15000;
 
 
 function checkScores() {
   if(userScore >= High.users[0].scored) {
+    High.users[0].userName = 'HAHAHAHAHA!!!!';
     High.users[0].level = (userLevel += 1);
     High.users[0].scored = (userScore += 1);
     userLevel = userLevel -= 1;
@@ -151,4 +151,3 @@ refreshButton.addEventListener('click', clickRefreshButton);
 
 yourScore();
 checkScores();
-//createTable();
