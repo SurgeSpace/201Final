@@ -15,7 +15,7 @@ level.appendChild(levelUp);
 
 var gameSize = 3;
 
-var topIndex = parseInt(gameSize - 1);
+var topIndex = 2;
 
 var tableTotal = 0;
 
@@ -44,6 +44,9 @@ var leftCells = [];
 
 var clickCell = 0;
 
+var audio = new Audio('../media/pop.mp3');
+var audioLost = new Audio('../media/lostGame.mp3');
+
 function randomNumber() {
   return Math.floor(Math.random() * Math.floor(burstNumber) + 1);
 }
@@ -64,9 +67,8 @@ function makeGameTable(){
     }
     game.appendChild(trEl);
   }
+  edgeCells();
   gameIndex = parseInt(gameNumbers.length) - 1;
-  console.log(gameIndex);
-  console.log(tableTotal);
   console.log(gameNumbers);
   if(tableTotal > (gameSize * gameSize * 2)){
     location.reload();
@@ -76,7 +78,7 @@ function makeGameTable(){
 function edgeCells() {
   var edge = 0;
   topCells.push(edge);
-  for(var i = 0; i < topIndex; i++){
+  for(var i = 0; i < gameSize - 1; i++){
     edge++;
     topCells.push(edge);
   }
@@ -104,6 +106,10 @@ function edgeCells() {
   leftCells.shift();
   bottomCells.pop();
   bottomCells.shift();
+  console.log('top ' + topCells);
+  console.log('right ' + rightCells);
+  console.log('bot ' + bottomCells);
+  console.log('left ' + leftCells);
 }
 
 function updateNumbers(event){
@@ -120,6 +126,32 @@ function clickTracker(){
 }
 
 function clearAndCheck(){
+  if(clearedCells.length === gameNumbers.length){
+    // var gameMsg = document.getElementById('gameMsg');
+    // var winMsg = document.createElement('p');
+    // winMsg.textContent = ('Congratulations!! You have beaten this level.');
+    // gameMsg.appendChild(winMsg);
+    lastGamePlayed += 1;
+    gameScore += clicksRemaining * 100;
+    console.log(gameScore);
+    clearedCells = [];
+    localStorage.lastGame = JSON.stringify(lastGamePlayed);
+    localStorage.currentScore = JSON.stringify(gameScore);
+    console.log('win');
+    startGame();
+  }
+
+  if(clicksRemaining < 0 && clearedCells.length < gameNumbers.length){
+    var rmvTable = document.getElementById('gameTable');
+    rmvTable.parentNode.removeChild(rmvTable);
+    var gameMsg = document.getElementById('results');
+    var lostMsg = document.createElement('p');
+    lostMsg.textContent = ('Sorry. You took too many clicks and lost this game.');
+    gameMsg.appendChild(lostMsg);
+    audioLost.play();
+    console.log('lose');
+  }
+
   for(var i in gameNumbers){
     if(gameNumbers[i] > burstNumber){
       clickCell = parseInt(i);
@@ -129,31 +161,8 @@ function clearAndCheck(){
       gameNumbers[i] = 0;
       gameScore = gameScore + 100;
       score.textContent = gameScore;
-      updateNeighbors();
-      console.log('clearedCells length ' + clearedCells.length);
-
-      if(clearedCells.length === gameNumbers.length){
-        // var gameMsg = document.getElementById('gameMsg');
-        // var winMsg = document.createElement('p');
-        // winMsg.textContent = ('Congratulations!! You have beaten this level.  Are you ready to move to the next level?');
-        // gameMsg.appendChild(winMsg);
-        lastGamePlayed += 1;
-
-        clearedCells = [];
-        localStorage.lastGame = JSON.stringify(lastGamePlayed);
-        localStorage.currentScore = JSON.stringify(gameScore);
-        console.log('win');
-        startGame();
-      }
-
-      if(clicksRemaining === 0 && clearedCells.length < gameNumbers.length){
-        // var gameMsg = document.getElementById('gameMsg');
-        // var lostMsg = document.createElement('p');
-        // lostMsg.textContent = ('Sorry. You took too many clicks and lost this game.');
-        // gameMsg.appendChild(lostMsg);
-        console.log('lose');
-        startGame();
-      }
+      setTimeout('updateNeighbors()', 100);
+      audio.play();
     }
   }
 }
@@ -164,53 +173,45 @@ function updateNeighbors(){
   if(clickCell === 0){
     rightCell();
     bottomCell();
-    console.log('1st');
   }
   //code for top right cell
   else if(clickCell === topIndex){
     leftCell();
     bottomCell();
-    console.log('topR');
   }
   //code for bottom left cell
   else if(clickCell === (gameIndex - (gameSize - 1))){
     rightCell();
     topCell();
-    console.log('botL');
   }
   //code for last cell
   else if(clickCell === gameIndex){
     leftCell();
     topCell();
-    console.log('last');
   }
   //code for left edge interior cells
   else if(leftCells.includes(clickCell)){
     rightCell();
     topCell();
     bottomCell();
-    console.log('lei');
   }
   //code for right edge interior cells
   else if(rightCells.includes(clickCell)){
     leftCell();
     topCell();
     bottomCell();
-    console.log('rei');
   }
   //code for top interior cells
   else if(topCells.includes(clickCell)){
     rightCell();
     leftCell();
     bottomCell();
-    console.log('ti');
   }
   //code for bottom interior cells
   else if(bottomCells.includes(clickCell)){ console.log(clickCell);
     rightCell();
     leftCell();
     topCell();
-    console.log('bi');
   }
   //code for all interior cells
   else {
@@ -218,21 +219,20 @@ function updateNeighbors(){
     leftCell();
     topCell();
     bottomCell();
-    console.log('i');
   }
-  clearAndCheck();
 
-  console.log('gameNumbers' + gameNumbers);
+  console.log('before' + gameNumbers);
   clearAndCheck();
   for(var i in clearedCells){
     console.log('clearedCells ' + clearedCells);
     gameNumbers[clearedCells[i]] = 0;
   }
+  console.log('after' + gameNumbers);
+  // clearAndCheck();
 }
 
 function rightCell(){
   gameNumbers[clickCell + 1] = gameNumbers[clickCell + 1] + 1;
-  console.log('clickCell' + clickCell);
 }
 function leftCell(){
   gameNumbers[clickCell - 1] = gameNumbers[clickCell - 1] + 1;
@@ -280,32 +280,32 @@ function winnerWinnerChickenDinner(){
 
 function gameOne() {
   gameSize = 3;
+  topIndex = gameSize - 1;
   clicksRemaining = 8;
   clickCounter.textContent = clicksRemaining;
   burstNumber = 3;
   makeGameTable();
-  edgeCells();
   lastGamePlayed = 0;
   levelUp.textContent = 1;
   console.log('lastGamePlayed' + lastGamePlayed);
 }
 function gameTwo() {
   gameSize = 4;
+  topIndex = gameSize - 1;
   clicksRemaining = 10;
   clickCounter.textContent = clicksRemaining;
   burstNumber = 3;
   makeGameTable();
-  edgeCells();
   lastGamePlayed = 1;
   levelUp.textContent = 2;
 }
 function gameThree() {
   gameSize = 5;
+  topIndex = gameSize - 1;
   clicksRemaining = 15;
   clickCounter.textContent = clicksRemaining;
   burstNumber = 3;
   makeGameTable();
-  edgeCells();
   lastGamePlayed = 2;
   levelUp.textContent = 3;
 }
