@@ -55,8 +55,6 @@ p {
     border-radius: 500px;
     background-image: radial-gradient( white, lightgray, rgb(95, 95, 95));
    }
-   
-
 
    table {
     color: #333;
@@ -122,12 +120,13 @@ p {
 
 footer {
   text-align: center;
-  position:fixed;
   left:0;
   bottom:50px;
   width: 100%;
 }
 
-footer p{
-  font-size: 24px;
+footer a{
+  font-size: 18px;
+  text-decoration: none;
+  color: white;
 }
