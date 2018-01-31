@@ -70,6 +70,8 @@ p {
     opacity: 0.0;
     animation: port 1s 1 forwards;
     border-radius: 500px;
+    width:100px;
+    height:100px;
    }
    
    table td:nth-of-type(2){
