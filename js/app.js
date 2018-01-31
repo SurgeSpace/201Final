@@ -44,6 +44,9 @@ var leftCells = [];
 
 var clickCell = 0;
 
+var audio = new Audio('../media/pop.mp3');
+var audioLost = new Audio('../media/lostGame.mp3');
+
 function randomNumber() {
   return Math.floor(Math.random() * Math.floor(burstNumber) + 1);
 }
@@ -123,6 +126,32 @@ function clickTracker(){
 }
 
 function clearAndCheck(){
+  if(clearedCells.length === gameNumbers.length){
+    // var gameMsg = document.getElementById('gameMsg');
+    // var winMsg = document.createElement('p');
+    // winMsg.textContent = ('Congratulations!! You have beaten this level.');
+    // gameMsg.appendChild(winMsg);
+    lastGamePlayed += 1;
+    gameScore += clicksRemaining * 100;
+    console.log(gameScore);
+    clearedCells = [];
+    localStorage.lastGame = JSON.stringify(lastGamePlayed);
+    localStorage.currentScore = JSON.stringify(gameScore);
+    console.log('win');
+    startGame();
+  }
+
+  if(clicksRemaining < 0 && clearedCells.length < gameNumbers.length){
+    var rmvTable = document.getElementById('gameTable');
+    rmvTable.parentNode.removeChild(rmvTable);
+    var gameMsg = document.getElementById('results');
+    var lostMsg = document.createElement('p');
+    lostMsg.textContent = ('Sorry. You took too many clicks and lost this game.');
+    gameMsg.appendChild(lostMsg);
+    audioLost.play();
+    console.log('lose');
+  }
+
   for(var i in gameNumbers){
     if(gameNumbers[i] > burstNumber){
       clickCell = parseInt(i);
@@ -132,31 +161,8 @@ function clearAndCheck(){
       gameNumbers[i] = 0;
       gameScore = gameScore + 100;
       score.textContent = gameScore;
-      updateNeighbors();
-
-      if(clearedCells.length === gameNumbers.length){
-        // var gameMsg = document.getElementById('gameMsg');
-        // var winMsg = document.createElement('p');
-        // winMsg.textContent = ('Congratulations!! You have beaten this level.');
-        // gameMsg.appendChild(winMsg);
-        lastGamePlayed += 1;
-        gameScore += clicksRemaining * 100;
-        console.log(gameScore);
-        clearedCells = [];
-        localStorage.lastGame = JSON.stringify(lastGamePlayed);
-        localStorage.currentScore = JSON.stringify(gameScore);
-        console.log('win');
-        startGame();
-      }
-
-      if(clicksRemaining === 0 && clearedCells.length < gameNumbers.length){
-        // var gameMsg = document.getElementById('gameMsg');
-        // var lostMsg = document.createElement('p');
-        // lostMsg.textContent = ('Sorry. You took too many clicks and lost this game.');
-        // gameMsg.appendChild(lostMsg);
-        console.log('lose');
-        startGame();
-      }
+      setTimeout('updateNeighbors()', 100);
+      audio.play();
     }
   }
 }
