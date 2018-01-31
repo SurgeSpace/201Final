@@ -137,10 +137,11 @@ function clearAndCheck(){
       if(clearedCells.length === gameNumbers.length){
         // var gameMsg = document.getElementById('gameMsg');
         // var winMsg = document.createElement('p');
-        // winMsg.textContent = ('Congratulations!! You have beaten this level.  Are you ready to move to the next level?');
+        // winMsg.textContent = ('Congratulations!! You have beaten this level.');
         // gameMsg.appendChild(winMsg);
         lastGamePlayed += 1;
-
+        gameScore += clicksRemaining * 100;
+        console.log(gameScore);
         clearedCells = [];
         localStorage.lastGame = JSON.stringify(lastGamePlayed);
         localStorage.currentScore = JSON.stringify(gameScore);
