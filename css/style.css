@@ -12,8 +12,8 @@ body {
 .dev {
   font-size: 80px;
 }
-div {
-  margin-top: 10px;
+#container {
+  margin-top: 10px auto;
 }
 div p {
   display: inline-block;
@@ -23,7 +23,18 @@ div p {
   position: relative;
   margin: 0 auto;
   opacity: 0.0;
-  animation: port .5s 1 forwards;
+  animation: port 1.8s 1 forwards;
+}
+
+.pop {
+  display: inline-block;
+  font-family: 'Nunito', sans-serif;
+  font-size: 72px;
+  color: white;
+  position: relative;
+  margin: 0 auto;
+  opacity: 0.0;
+  animation: port .05s 1 forwards;
 }
 
 div p:nth-of-type(2){
@@ -42,20 +53,20 @@ div p:nth-of-type(5){
   animation-delay: 0.4s;
 }
 
-div p:nth-of-type(6){
-  animation-delay: 0.5s;
+div .pop:nth-of-type(6){
+  animation-delay: 1.7s;
 }
 
-div p:nth-of-type(7){
-  animation-delay: 0.6s;
+div .pop:nth-of-type(7){
+  animation-delay: 1.7s;
 }
 
-div p:nth-of-type(8){
-  animation-delay: 0.7s;
+div .pop:nth-of-type(8){
+  animation-delay: 1.7s;
 }
 
-div p:nth-of-type(9){
-  animation-delay: 1.5s;
+div .pop:nth-of-type(9){
+  animation-delay: 1.7s;
 }
 
 @keyframes port {
