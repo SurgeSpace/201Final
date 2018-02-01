@@ -68,7 +68,6 @@ p {
     padding: 48px 48px;
     border-radius: 500px;
     background-image: radial-gradient( white, lightgray, rgb(95, 95, 95));
-   }
 
    table {
     z-index: 2;
