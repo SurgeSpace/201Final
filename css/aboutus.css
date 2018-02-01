@@ -19,23 +19,23 @@ body {
 }
 #section1 {
   position: absolute;
-  left: 25%;
+  left: 20%;
   top: 60px;
 }
 #section2 {
   position: absolute;
-  right: 25%;
+  right: 20%;
   top: 60px;
 }
 #section3 {
   position: absolute;
   top: 380px;
-  left: 25%;
+  left: 20%;
 }
 #section4 {
   position: absolute;
   top: 380px;
-  right: 25%;
+  right: 20%;
 }
 .card-container {
   cursor: pointer;
@@ -72,6 +72,7 @@ body {
   transform: rotateY(180deg);
   filter: grayscale(0%);
   font-size: 15px;
+  padding-top: 20px;
 }
 
 #about-us-footer {
@@ -100,43 +101,28 @@ img {
   height: 100%;
   }
 
-  button {
-    border-radius: 10px;
-    background-color: #ffe600e5;
-    border: none;
-    color: white;
-    text-align: center;
-    font-size: 28px;
-    padding: 10px;
-    width: 200px;
-    transition: all 0.5s;
-    cursor: pointer;
-    margin: 0px auto;
+.contact-infromation {
+  color: white;
+}
+
+a:link {
+color: white;
   }
-  
-  button a {
-    cursor: pointer;
-    display: inline-block;
-    position: relative;
-    transition: 1.0s;
-    text-decoration: none;
-    color: white;
-  }
-  
-  button a:after {
-    content: '\00bb';
-    position: absolute;
-    opacity: 0;
-    top: 0;
-    right: -20px;
-    transition: 1.0s;
-  }
-  
-  button:hover a {
-    padding-right: 25px;
-  }
-  
-  button:hover a:after {
-    opacity: 1;
-    right: 0;
-  }
+
+a:visited {
+  color: white;
+}
+
+.links {
+ line-height: 12px;
+ padding-bottom:2px;
+}
+
+nav {
+  display: inline-block;
+}
+
+a {
+  padding-left: 2px;
+  padding-right: 2px;
+}
