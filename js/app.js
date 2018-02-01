@@ -10,8 +10,20 @@ scoreCell.appendChild(score);
 var level = document.getElementById('level');
 var levelUp = document.createElement('ul');
 level.appendChild(levelUp);
+var gameMsg = document.getElementById('results');
+
+var scores = document.createElement('button');
+scores.setAttribute('id', 'highScores');
+scores.setAttribute('content', 'High Scores');
+scores.style.visibility = ('hidden');
+gameMsg.appendChild(scores);
 
 
+var playAgain = document.createElement('button');
+playAgain.setAttribute('id', 'replayLevel');
+playAgain.setAttribute('content', 'Replay Level');
+playAgain.style.visibility = ('hidden');
+gameMsg.appendChild(playAgain);
 
 var gameSize = 3;
 var topIndex = 2;
@@ -34,7 +46,12 @@ var leftCells = [];
 var clickCell = 0;
 
 var audio = new Audio('../media/pop.mp3');
-var audioLost = new Audio('../media/lostGame.mp3');
+var audioLost = new Audio('../media/gandalf_shallnotpass.wav');
+
+var audioWin = new Audio('../media/austin_yeahbaby.wav');
+var audioWin2 = new Audio('../media/darthvader_taughtyouwell.wav');
+var audioWin3 = new Audio('../media/austin_groovy.wav');
+var audioWin4 = new Audio('../media/woohoo.wav');
 
 var maxTableTotal;
 
@@ -119,28 +136,40 @@ function clickTracker(){
 
 function clearAndCheck(){
   if(clearedCells.length === gameNumbers.length){
-    // var gameMsg = document.getElementById('gameMsg');
-    // var winMsg = document.createElement('p');
-    // winMsg.textContent = ('Congratulations!! You have beaten this level.');
-    // gameMsg.appendChild(winMsg);
+    var gameWin = document.getElementById('results');
+    var winMsg = document.createElement('p');
+    winMsg.textContent = ('You have beaten this level. On to the next!');
+    gameWin.appendChild(winMsg);
     lastGamePlayed += 1;
     gameScore += clicksRemaining * 100;
     console.log(gameScore);
     clearedCells = [];
     localStorage.lastGame = JSON.stringify(lastGamePlayed);
     localStorage.currentScore = JSON.stringify(gameScore);
+    audioWin.play();
+    setTimeout('startGame()', 5000);
     console.log('win');
-    startGame();
   }
 
   if(clicksRemaining < 0 && clearedCells.length < gameNumbers.length){
+    clicksRemaining = 0;
     var rmvTable = document.getElementById('gameTable');
     rmvTable.parentNode.removeChild(rmvTable);
-    var gameMsg = document.getElementById('results');
+    // var gameMsg = document.getElementById('results');
     var lostMsg = document.createElement('p');
+    lostMsg.setAttribute('id', 'lostMsg');
     lostMsg.textContent = ('Sorry. You took too many clicks and lost this game.');
     gameMsg.appendChild(lostMsg);
+    // var scores = document.createElement('button');
+    // scores.setAttribute('id', 'highScores');
+    // scores.setAttribute('content', 'High Scores');
+    // lostMsg.appendChild(scores);
+    // var playAgain = document.createElement('button');
+    // playAgain.setAttribute('id', 'replayLevel');
+    // playAgain.setAttribute('content', 'Replay Level');
+    // lostMsg.appendChild(playAgain);
     audioLost.play();
+    // setTimeout('startGame()', 5000);
     console.log('lose');
   }
 
@@ -153,10 +182,19 @@ function clearAndCheck(){
       gameNumbers[i] = 0;
       gameScore = gameScore + 100;
       score.textContent = gameScore;
-      setTimeout('updateNeighbors()', 100);
       audio.play();
+      setTimeout('updateNeighbors()', 150);
     }
   }
+}
+
+function loserOptions(event){
+  if(event.target.id === 'highScores'){
+    window.location.href = 'scores.html';
+  }else{
+    startGame();
+  }
+
 }
 
 function updateNeighbors(){
@@ -236,8 +274,6 @@ function bottomCell(){
   gameNumbers[clickCell + gameSize] = gameNumbers[clickCell + gameSize] + 1;
 }
 
-
-game.addEventListener('click', updateNumbers);
 
 function winnerWinnerChickenDinner(){
   if(lastGamePlayed === 0) {
@@ -409,6 +445,9 @@ function startGame(){
     gameOne();
   }
 }
+
+game.addEventListener('click', updateNumbers);
+highScores.addEventListener('click', loserOptions);
 
 startGame();
 
