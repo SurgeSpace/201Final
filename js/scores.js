@@ -146,6 +146,9 @@ function clickRefreshButton(e) {
 }
 
 function clickLogOut(e) {
+  localStorage.previousHighScores = JSON.stringify(High.users);
+  localStorage.lastGame = 0;
+  localStorage.currentScore = 0;
   localStorage.firstName = '';
 }
 
