@@ -18,6 +18,17 @@ h1 {
 
 }
 
+h3 {
+  width: 100%;
+  text-align: center;
+  margin: 15px 0;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
 p {
   display: inline-block;
   font-size: 72px;
