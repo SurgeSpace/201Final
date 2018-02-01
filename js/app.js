@@ -14,16 +14,16 @@ var gameMsg = document.getElementById('results');
 
 var scores = document.createElement('button');
 scores.setAttribute('id', 'highScores');
-scores.setAttribute('content', 'High Scores');
+scores.textContent = ('High Scores');
 scores.style.visibility = ('hidden');
 gameMsg.appendChild(scores);
 
 
-var playAgain = document.createElement('button');
-playAgain.setAttribute('id', 'replayLevel');
-playAgain.setAttribute('content', 'Replay Level');
-playAgain.style.visibility = ('hidden');
-gameMsg.appendChild(playAgain);
+var replayLevel = document.createElement('button');
+replayLevel.setAttribute('id', 'replayLevel');
+replayLevel.textContent = ('Replay Level');
+replayLevel.style.visibility = ('hidden');
+gameMsg.appendChild(replayLevel);
 
 var gameSize = 3;
 var topIndex = 2;
@@ -129,7 +129,7 @@ function updateNumbers(event){
   clearAndCheck();
 }
 
-function clickTracker(){
+function clickTracker(){  
   clicksRemaining = clicksRemaining - 1;
   clickCounter.textContent = clicksRemaining;
 }
@@ -151,18 +151,19 @@ function clearAndCheck(){
     console.log('win');
   }
 
-  if(clicksRemaining <= -1 && clearedCells.length < gameNumbers.length){
+  if(clicksRemaining < 0 && clearedCells.length < gameNumbers.length){
+    clickCounter.textContent = ('0');
     var rmvTable = document.getElementById('gameTable');
     rmvTable.parentNode.removeChild(rmvTable);
-    clicksRemaining = 0;
-    clickCounter.textContent = clicksRemaining;
     // var gameMsg = document.getElementById('results');
     var lostMsg = document.createElement('p');
     lostMsg.setAttribute('id', 'lostMsg');
     lostMsg.textContent = ('Sorry. You took too many clicks and lost this game.');
     gameMsg.appendChild(lostMsg);
+    scores.style.visibility = ('initial');
+    replayLevel.style.visibility = ('initial');
     // var scores = document.createElement('button');
-    // scores.setAttribute('id', 'highScores');
+    // scores.setAttribute('id', 'highScores')
     // scores.setAttribute('content', 'High Scores');
     // lostMsg.appendChild(scores);
     // var playAgain = document.createElement('button');
@@ -448,7 +449,8 @@ function startGame(){
 }
 
 game.addEventListener('click', updateNumbers);
-highScores.addEventListener('click', loserOptions);
+replayLevel.addEventListener('click', loserOptions);
+scores.addEventListener('click', loserOptions);
 
 startGame();
 

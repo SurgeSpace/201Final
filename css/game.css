@@ -176,42 +176,42 @@ a{
   position: fixed;
   top: 50px;
   left: 20px;
-}
-  
+
 #highScores {
-  height: 20px;
-  width: 80px;
-  font-size: 10px;
-  border: 1px solid white;
-  color: black;
-  background-color: #666;
-  align-items: none;
-  text-align: center;
-  cursor: default;
-  padding: 3px;
-  border-radius: 3px;
-  text-rendering: initial;
-  font-family: Helvetica, Arial, sans-serif;
-  position: relative;
-  top: -79px;
-  left: 174px;
+  all: unset;
 }
 
-#replayLevel {
-  height: 20px;
-  width: 80px;
-  font-size: 10px;
-  border: 1px solid white;
-  color: black;
-  background-color: #666;
-  align-items: none;
+#highScores {
+  height: 18px;
+  width: 120px;
+  font-size: 14px;
+  color: white;
+  background-color: #555;
   text-align: center;
   cursor: default;
   padding: 3px;
-  border-radius: 3px;
+  border-radius: 10px;
   text-rendering: initial;
-  font-family: Helvetica, Arial, sans-serif;
   position: relative;
-  top: -79px;
-  left: 373px;
-}
+  top: 132px;
+  left: 142px;
+ }
+ #replayLevel {
+   all: unset;
+ }
+
+ #replayLevel {
+   height: 18px;
+   width: 120px;
+   font-size: 14px;
+   color: white;
+   background-color: #666;
+   text-align: center;
+   cursor: default;
+   padding: 3px;
+   border-radius: 10px;
+   text-rendering: initial;
+   position: relative;
+   top: 132px;
+   left: 317px;
+ }
