@@ -166,38 +166,40 @@ a{
   left: 20px;
 }
 #highScores {
-  height: 20px;
+  all: unset;
+}
+
+#highScores {
+  height: 18px;
   width: 120px;
-  font-size: 10px;
-  border: 1px solid white;
-  color: black;
-  background-color: #666;
-  align-items: none;
+  font-size: 14px;
+  color: white;
+  background-color: #555;
   text-align: center;
   cursor: default;
   padding: 3px;
-  border-radius: 3px;
+  border-radius: 10px;
   text-rendering: initial;
-  font-family: Helvetica, Arial, sans-serif;
   position: relative;
-  top: 129px;
-  left: 149px;
+  top: 132px;
+  left: 142px;
  }
  #replayLevel {
-   height: 20px;
+   all: unset;
+ }
+
+ #replayLevel {
+   height: 18px;
    width: 120px;
-   font-size: 10px;
-   border: 1px solid white;
-   color: black;
+   font-size: 14px;
+   color: white;
    background-color: #666;
-   align-items: none;
    text-align: center;
    cursor: default;
    padding: 3px;
-   border-radius: 3px;
+   border-radius: 10px;
    text-rendering: initial;
-   font-family: Helvetica, Arial, sans-serif;
    position: relative;
-   top: 129px;
-   left: 330px;
+   top: 132px;
+   left: 317px;
  }

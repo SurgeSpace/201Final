@@ -14,14 +14,14 @@ var gameMsg = document.getElementById('results');
 
 var scores = document.createElement('button');
 scores.setAttribute('id', 'highScores');
-scores.setAttribute('content', 'High Scores');
+scores.textContent = ('High Scores');
 scores.style.visibility = ('hidden');
 gameMsg.appendChild(scores);
 
 
 var replayLevel = document.createElement('button');
 replayLevel.setAttribute('id', 'replayLevel');
-replayLevel.setAttribute('content', 'Replay Level');
+replayLevel.textContent = ('Replay Level');
 replayLevel.style.visibility = ('hidden');
 gameMsg.appendChild(replayLevel);
 
@@ -129,7 +129,7 @@ function updateNumbers(event){
   clearAndCheck();
 }
 
-function clickTracker(){
+function clickTracker(){  
   clicksRemaining = clicksRemaining - 1;
   clickCounter.textContent = clicksRemaining;
 }
@@ -152,7 +152,7 @@ function clearAndCheck(){
   }
 
   if(clicksRemaining < 0 && clearedCells.length < gameNumbers.length){
-    clicksRemaining = 0;
+    clickCounter.textContent = ('0');
     var rmvTable = document.getElementById('gameTable');
     rmvTable.parentNode.removeChild(rmvTable);
     // var gameMsg = document.getElementById('results');
