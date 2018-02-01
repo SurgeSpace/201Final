@@ -151,10 +151,11 @@ function clearAndCheck(){
     console.log('win');
   }
 
-  if(clicksRemaining < 0 && clearedCells.length < gameNumbers.length){
-    clicksRemaining = 0;
+  if(clicksRemaining <= -1 && clearedCells.length < gameNumbers.length){
     var rmvTable = document.getElementById('gameTable');
     rmvTable.parentNode.removeChild(rmvTable);
+    clicksRemaining = 0;
+    clickCounter.textContent = clicksRemaining;
     // var gameMsg = document.getElementById('results');
     var lostMsg = document.createElement('p');
     lostMsg.setAttribute('id', 'lostMsg');

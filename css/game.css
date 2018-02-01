@@ -144,6 +144,8 @@ table td:nth-of-type(9){
   animation-delay: 0.8s;
 }
 
+
+
 @keyframes port {
   0%{
     transform: rotateY(90deg) translateY(25%);
@@ -153,38 +155,7 @@ table td:nth-of-type(9){
     width:100px;
     height:100px;
    }
-   
-   table td:nth-of-type(2){
-    animation-delay: 0.1s;
-   }
-   
-   table td:nth-of-type(3){
-    animation-delay: 0.2s;
-   }
-   
-   table td:nth-of-type(4){
-    animation-delay: 0.3s;
-   }
-   
-   table td:nth-of-type(5){
-    animation-delay: 0.4s;
-    }
-   
-   table td:nth-of-type(6){
-    animation-delay: 0.5s;
-   }
-   
-   table td:nth-of-type(7){
-    animation-delay: 0.6s;
-   }
-   
-   table td:nth-of-type(8){
-    animation-delay: 0.7s;
-   }
-   
-   table td:nth-of-type(9){
-    animation-delay: 0.8s;
-   }
+  }
 
    @keyframes port {
     0%{
@@ -195,7 +166,6 @@ table td:nth-of-type(9){
       transform: rotateY(0deg) translateY(0%);
       opacity: 1.0;
     }
-
   }
   
 /* game load animation end */
@@ -208,39 +178,40 @@ a{
   left: 20px;
 }
   
-     #highScores {
-     height: 20px;
-     width: 80px;
-     font-size: 10px;
-     border: 1px solid white;
-     color: black;
-     background-color: #666;
-     align-items: none;
-     text-align: center;
-     cursor: default;
-     padding: 3px;
-     border-radius: 3px;
-     text-rendering: initial;
-     font-family: Helvetica, Arial, sans-serif;
-     position: relative;
-     top: -79px;
-     left: 174px;
-    }
-    #replayLevel {
-      height: 20px;
-      width: 80px;
-      font-size: 10px;
-      border: 1px solid white;
-      color: black;
-      background-color: #666;
-      align-items: none;
-      text-align: center;
-      cursor: default;
-      padding: 3px;
-      border-radius: 3px;
-      text-rendering: initial;
-      font-family: Helvetica, Arial, sans-serif;
-      position: relative;
-      top: -79px;
-      left: 373px;
-    }
+#highScores {
+  height: 20px;
+  width: 80px;
+  font-size: 10px;
+  border: 1px solid white;
+  color: black;
+  background-color: #666;
+  align-items: none;
+  text-align: center;
+  cursor: default;
+  padding: 3px;
+  border-radius: 3px;
+  text-rendering: initial;
+  font-family: Helvetica, Arial, sans-serif;
+  position: relative;
+  top: -79px;
+  left: 174px;
+}
+
+#replayLevel {
+  height: 20px;
+  width: 80px;
+  font-size: 10px;
+  border: 1px solid white;
+  color: black;
+  background-color: #666;
+  align-items: none;
+  text-align: center;
+  cursor: default;
+  padding: 3px;
+  border-radius: 3px;
+  text-rendering: initial;
+  font-family: Helvetica, Arial, sans-serif;
+  position: relative;
+  top: -79px;
+  left: 373px;
+}

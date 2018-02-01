@@ -7,7 +7,7 @@ body {
 }
 
 #about-us {
-  margin-top:20px;
+  margin-top:30px;
   text-align: center;
   color: white;
   font-size: 50px;
@@ -16,26 +16,27 @@ body {
   position: relative;
   max-width: 90%;
   margin: auto;
+
 }
 #section1 {
   position: absolute;
-  left: 20%;
-  top: 60px;
+  left: 300px;
+  top: 50px;
 }
 #section2 {
   position: absolute;
-  right: 20%;
-  top: 60px;
+  right: 300px;
+  top: 50px;
 }
 #section3 {
   position: absolute;
   top: 380px;
-  left: 20%;
+  left: 300px;
 }
 #section4 {
   position: absolute;
   top: 380px;
-  right: 20%;
+  right: 300px;
 }
 .card-container {
   cursor: pointer;
@@ -81,7 +82,7 @@ body {
   top: 770px;
   left: 35%;
 }
-/* 
+
 .navbutton {
   border-radius: 4px;
   background-color: #ffe400;
@@ -94,7 +95,7 @@ body {
   transition: all 0.5s;
   cursor: pointer;
   margin: 0px auto;
-} */
+}
 
 img {
   max-width: 100%;
@@ -104,6 +105,7 @@ img {
 .contact-infromation {
   color: white;
 }
+
 
 a:link {
 color: white;
