@@ -6,6 +6,7 @@ var tdEl = document.createElement('td');
 
 var refresh = document.getElementById('restartGame');
 var refreshButton = document.createElement('button');
+var logout = document.getElementById('logout');
 refreshButton.textContent = 'Play again!';
 refresh.appendChild(refreshButton);
 
@@ -144,7 +145,12 @@ function clickRefreshButton(e) {
   location.href = '../html/game.html';
 }
 
+function clickLogOut(e) {
+  localStorage.firstName = '';
+}
+
 refreshButton.addEventListener('click', clickRefreshButton);
+logout.addEventListener('click', clickLogOut);
 
 yourScore();
 checkScores();
