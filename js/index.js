@@ -1,17 +1,10 @@
-// document.getElementById('button').style.display = 'none';
+var audio = new Audio('media/pop.mp3');
 
-// on form submit, store data
 function store(){
   if (!localStorage.firstName) {
     var inputFirstName = document.getElementById('firstName');
     localStorage.setItem('firstName', inputFirstName.value);
-   
   }
-}
-
-function hideEl() {
-  document.getElementById('firstName').style.display = 'none';
-  document.getElementById('fText').style.display = 'none';
 }
 
 function pageLoad() {
@@ -21,4 +14,12 @@ function pageLoad() {
   }
 }
 
+function hideEl() {
+  document.getElementById('firstName').style.display = 'none';
+  document.getElementById('fText').style.display = 'none';
+  document.getElementById('button').style.display = 'none';
+  document.getElementById('button2').style.visibility = 'visible';
+}
+
+setTimeout('audio.play()', 1700);
 pageLoad();

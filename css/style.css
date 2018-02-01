@@ -1,13 +1,10 @@
 body {
-  margin: 0;
-  padding: 0;
-  height:  850px;
+  height: 780px;
   background: linear-gradient(to bottom right, #272727, #e9e9e9);
   font-family: 'Nunito', sans-serif; 
 }
 
 /* begin title animation */
-
 .color {
   color: white;
 }
@@ -26,48 +23,39 @@ div p {
   position: relative;
   margin: 0 auto;
   opacity: 0.0;
-  animation: port 3s 1 forwards;
-  -webkit-animation: port 3s 1 forwards;
+  animation: port .5s 1 forwards;
 }
 
 div p:nth-of-type(2){
   animation-delay: 0.1s;
-  -webkit-animation-delay: 0.1s;
 }
 
 div p:nth-of-type(3){
   animation-delay: 0.2s;
-  -webkit-animation-delay: 0.2s;
 }
 
 div p:nth-of-type(4){
   animation-delay: 0.3s;
-  -webkit-animation-delay: 0.3s;
 }
 
 div p:nth-of-type(5){
   animation-delay: 0.4s;
-  -webkit-animation-delay: 0.4s;
 }
 
 div p:nth-of-type(6){
   animation-delay: 0.5s;
-  -webkit-animation-delay: 0.5s;
 }
 
 div p:nth-of-type(7){
   animation-delay: 0.6s;
-  -webkit-animation-delay: 0.6s;
 }
 
 div p:nth-of-type(8){
   animation-delay: 0.7s;
-  -webkit-animation-delay: 0.7s;
 }
 
 div p:nth-of-type(9){
-  animation-delay: 0.8s;
-  -webkit-animation-delay: 0.8s;
+  animation-delay: 1.5s;
 }
 
 @keyframes port {
@@ -79,27 +67,6 @@ div p:nth-of-type(9){
     transform: rotateY(0deg) translateY(0%);
     opacity: 1.0;
   }
-}
-
-@-webkit-keyframes port {
-  0%{
-   -webkit-transform: rotateY(90deg) translateY(25%);
-    opacity: 0.0;
-  }
-  100%{
-    -webkit-transform: rotateY(0deg) translateY(0%);
-    opacity: 1.0;
-  }
-}
-
-@keyframes reset {
-  0%{}
-  100%{}
-}
-
-@-webkit-keyframes reset {
-  0%{}
-  100%{}
 }
 /* end title animation */
 
@@ -116,14 +83,14 @@ form {
   padding: 0px;
 }
 
-/* button hover animation */
 input{
-  width: 50%;
+  width: 46%;
   padding: 12px 5px;
   margin: 8px 0;
   box-sizing: border-box;
   border: none;
   background-color: gray;
+  border-radius: 6px;
   color: white;
 }
 
@@ -140,9 +107,15 @@ input{
   color: lightgray;
 }
 
+/* button hover animation */
+
 #button {
+  margin: 0px 15px 0px 15px;
+}
+
+button {
   border-radius: 10px;
-  background-color: #ffe400;
+  background-color: #ffe600e5;
   border: none;
   color: white;
   text-align: center;
@@ -154,7 +127,7 @@ input{
   margin: 0px auto;
 }
 
-#button a {
+button a {
   cursor: pointer;
   display: inline-block;
   position: relative;
@@ -163,7 +136,7 @@ input{
   color: white;
 }
 
-#button a:after {
+button a:after {
   content: '\00bb';
   position: absolute;
   opacity: 0;
@@ -172,11 +145,11 @@ input{
   transition: 1.0s;
 }
 
-#button:hover a {
+button:hover a {
   padding-right: 25px;
 }
 
-#button:hover a:after {
+button:hover a:after {
   opacity: 1;
   right: 0;
 }
