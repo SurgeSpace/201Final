@@ -16,7 +16,6 @@ body {
   position: relative;
   max-width: 90%;
   margin: auto;
-
 }
 #section1 {
   position: absolute;
@@ -82,7 +81,7 @@ body {
   top: 770px;
   left: 35%;
 }
-
+/* 
 .navbutton {
   border-radius: 4px;
   background-color: #ffe400;
@@ -95,7 +94,7 @@ body {
   transition: all 0.5s;
   cursor: pointer;
   margin: 0px auto;
-}
+} */
 
 img {
   max-width: 100%;
@@ -105,7 +104,6 @@ img {
 .contact-infromation {
   color: white;
 }
-
 
 a:link {
 color: white;
