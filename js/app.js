@@ -240,7 +240,9 @@ function bottomCell(){
 game.addEventListener('click', updateNumbers);
 
 function winnerWinnerChickenDinner(){
-
+  if(lastGamePlayed === 0) {
+    gameOne();
+  }
   if(lastGamePlayed === 1) {
     gameTwo();
   }
@@ -386,6 +388,9 @@ function gameForever() {
   burstNumber = 4;
   maxTableTotal = 60;
   makeGameTable();
+  if(lastGamePlayed <= 9) {
+    lastGamePlayed = 10;
+  }
   levelUp.textContent = lastGamePlayed;
   console.log('lastGamePlayed' + lastGamePlayed);
 }
