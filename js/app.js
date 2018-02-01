@@ -12,6 +12,18 @@ var levelUp = document.createElement('ul');
 level.appendChild(levelUp);
 var gameMsg = document.getElementById('results');
 
+var scores = document.createElement('button');
+scores.setAttribute('id', 'highScores');
+scores.setAttribute('content', 'High Scores');
+scores.style.visibility = ('hidden');
+gameMsg.appendChild(scores);
+
+
+var playAgain = document.createElement('button');
+playAgain.setAttribute('id', 'replayLevel');
+playAgain.setAttribute('content', 'Replay Level');
+playAgain.style.visibility = ('hidden');
+gameMsg.appendChild(playAgain);
 
 var gameSize = 3;
 var topIndex = 2;
@@ -145,16 +157,17 @@ function clearAndCheck(){
     rmvTable.parentNode.removeChild(rmvTable);
     // var gameMsg = document.getElementById('results');
     var lostMsg = document.createElement('p');
+    lostMsg.setAttribute('id', 'lostMsg');
     lostMsg.textContent = ('Sorry. You took too many clicks and lost this game.');
     gameMsg.appendChild(lostMsg);
-    var scores = document.createElement('button');
-    scores.setAttribute('id', 'highScores');
-    scores.setAttribute('content', 'High Scores');
-    gameMsg.appendChild(scores);
-    var playAgain = document.createElement('button');
-    playAgain.setAttribute('id', 'replayLevel');
-    playAgain.setAttribute('content', 'Replay Level');
-    gameMsg.appendChild(playAgain);
+    // var scores = document.createElement('button');
+    // scores.setAttribute('id', 'highScores');
+    // scores.setAttribute('content', 'High Scores');
+    // lostMsg.appendChild(scores);
+    // var playAgain = document.createElement('button');
+    // playAgain.setAttribute('id', 'replayLevel');
+    // playAgain.setAttribute('content', 'Replay Level');
+    // lostMsg.appendChild(playAgain);
     audioLost.play();
     // setTimeout('startGame()', 5000);
     console.log('lose');
@@ -429,7 +442,7 @@ function startGame(){
 }
 
 game.addEventListener('click', updateNumbers);
-gameMsg.addEventListener('click', loserOptions);
+highScores.addEventListener('click', loserOptions);
 
 startGame();
 
