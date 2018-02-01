@@ -240,7 +240,9 @@ function bottomCell(){
 game.addEventListener('click', updateNumbers);
 
 function winnerWinnerChickenDinner(){
-
+  if(lastGamePlayed === 0) {
+    gameOne();
+  }
   if(lastGamePlayed === 1) {
     gameTwo();
   }
