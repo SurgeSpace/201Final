@@ -19,6 +19,20 @@ body {
     top: 30px;
     text-align: center;
    }
+   #results {
+     top: 50px;
+     margin: 0px auto;
+   }
+
+   #results p {
+    background-color: #444;
+    padding: 30px;
+    border-radius: 50px;
+    color: white;
+    font-family: 'Nunito', sans-serif;
+    text-align: center;
+    font-size: 18px;
+   }
 
    #results {
     width: 50%;
@@ -77,10 +91,9 @@ body {
     border-radius: 500px;
     background-image: radial-gradient( white, lightgray, rgb(95, 95, 95));
    }
-   
-
 
    table {
+    z-index: 2;
     color: #333;
     font-family: Helvetica, Arial, sans-serif;
     border-spacing: 4px;
@@ -150,5 +163,4 @@ a{
   position: fixed;
   top: 50px;
   left: 20px;
-  
 }
