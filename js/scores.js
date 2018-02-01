@@ -70,15 +70,9 @@ if(localStorage.previousHighScores){
   new High('Jim', 5, 7000);
 }
 
-// var userName = localStorage.userName;
-// var userLevel = JSON.parse(localStorage.getItem('lastGamePlayed'));
-// var userScore = JSON.parse(localStorage.getItem('currentScore'));
-//new High(userName, userLevel, userScore);
-
-var userName = 'Mikey';
-var userLevel = 9;
-var userScore = 15000;
-
+var userName = localStorage.firstName;
+var userLevel = JSON.parse(localStorage.getItem('lastGame'));
+var userScore = JSON.parse(localStorage.getItem('currentScore'));
 
 function checkScores() {
   if(userScore >= High.users[0].scored) {
@@ -138,11 +132,14 @@ function checkScores() {
     High.users[4].scored = userScore;
     createTable();
   }
+  if(userScore < High.users[4].scored){
+    createTable();
+  }
 }
 
 function clickRefreshButton(e) {
   localStorage.previousHighScores = JSON.stringify(High.users);
-  localStorage.lastGamePlayed = 0;
+  localStorage.lastGame = 0;
   localStorage.currentScore = 0;
   location.href = '../html/game.html';
 }
