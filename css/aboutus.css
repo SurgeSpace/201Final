@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  height: 850px;
+  height: 1000px;
   background: linear-gradient(to bottom right, rgb(77, 71, 71), rgb(194, 194, 194));
   font-family: 'Nunito', sans-serif; 
 }
