@@ -19,6 +19,20 @@ p {
     top: 30px;
     text-align: center;
    }
+   #results {
+     top: 50px;
+     margin: 0px auto;
+   }
+
+   #results p {
+    background-color: #444;
+    padding: 30px;
+    border-radius: 50px;
+    color: white;
+    font-family: 'Nunito', sans-serif;
+    text-align: center;
+    font-size: 18px;
+   }
 
    #dev {
     color: #ffe400;
@@ -55,10 +69,9 @@ p {
     border-radius: 500px;
     background-image: radial-gradient( white, lightgray, rgb(95, 95, 95));
    }
-   
-
 
    table {
+    z-index: 2;
     color: #333;
     font-family: Helvetica, Arial, sans-serif;
     border-spacing: 4px;
@@ -124,12 +137,13 @@ p {
 
 footer {
   text-align: center;
-  position:fixed;
   left:0;
   bottom:50px;
   width: 100%;
 }
 
-footer p{
-  font-size: 24px;
+footer a{
+  font-size: 18px;
+  text-decoration: none;
+  color: white;
 }
