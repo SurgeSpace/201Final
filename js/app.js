@@ -19,11 +19,11 @@ scores.style.visibility = ('hidden');
 gameMsg.appendChild(scores);
 
 
-var playAgain = document.createElement('button');
-playAgain.setAttribute('id', 'replayLevel');
-playAgain.setAttribute('content', 'Replay Level');
-playAgain.style.visibility = ('hidden');
-gameMsg.appendChild(playAgain);
+var replayLevel = document.createElement('button');
+replayLevel.setAttribute('id', 'replayLevel');
+replayLevel.setAttribute('content', 'Replay Level');
+replayLevel.style.visibility = ('hidden');
+gameMsg.appendChild(replayLevel);
 
 var gameSize = 3;
 var topIndex = 2;
@@ -160,8 +160,10 @@ function clearAndCheck(){
     lostMsg.setAttribute('id', 'lostMsg');
     lostMsg.textContent = ('Sorry. You took too many clicks and lost this game.');
     gameMsg.appendChild(lostMsg);
+    scores.style.visibility = ('initial');
+    replayLevel.style.visibility = ('initial');
     // var scores = document.createElement('button');
-    // scores.setAttribute('id', 'highScores');
+    // scores.setAttribute('id', 'highScores')
     // scores.setAttribute('content', 'High Scores');
     // lostMsg.appendChild(scores);
     // var playAgain = document.createElement('button');
@@ -442,7 +444,8 @@ function startGame(){
 }
 
 game.addEventListener('click', updateNumbers);
-highScores.addEventListener('click', loserOptions);
+replayLevel.addEventListener('click', loserOptions);
+scores.addEventListener('click', loserOptions);
 
 startGame();
 
