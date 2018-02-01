@@ -13,16 +13,16 @@ level.appendChild(levelUp);
 var gameMsg = document.getElementById('results');
 
 var scores = document.createElement('button');
-scores.setAttribute('id', 'highScores');
+scores.setAttribute('id', 'highScoresNot');
 scores.textContent = ('High Scores');
-scores.style.visibility = ('hidden');
+scores.style.visibility = ('none');
 gameMsg.appendChild(scores);
 
 
 var replayLevel = document.createElement('button');
-replayLevel.setAttribute('id', 'replayLevel');
+replayLevel.setAttribute('id', 'replayLevelNot');
 replayLevel.textContent = ('Replay Level');
-replayLevel.style.visibility = ('hidden');
+replayLevel.style.visibility = ('none');
 gameMsg.appendChild(replayLevel);
 
 var gameSize = 3;
@@ -160,18 +160,18 @@ function clearAndCheck(){
     lostMsg.setAttribute('id', 'lostMsg');
     lostMsg.textContent = ('Sorry. You took too many clicks and lost this game.');
     gameMsg.appendChild(lostMsg);
-    scores.style.visibility = ('initial');
-    replayLevel.style.visibility = ('initial');
+    scores.setAttribute('id', 'highScores');
+    replayLevel.setAttribute('id', 'replayLevel');
     // var scores = document.createElement('button');
-    // scores.setAttribute('id', 'highScores')
-    // scores.setAttribute('content', 'High Scores');
-    // lostMsg.appendChild(scores);
-    // var playAgain = document.createElement('button');
-    // playAgain.setAttribute('id', 'replayLevel');
-    // playAgain.setAttribute('content', 'Replay Level');
-    // lostMsg.appendChild(playAgain);
+    // scores.setAttribute('id', 'highScores');
+    // scores.textContent = ('High Scores');
+    // // scores.style.visibility = ('none');
+    // gameMsg.appendChild(scores);
+    // var replayLevel = document.createElement('button');
+    // replayLevel.setAttribute('id', 'replayLevel');
+    // replayLevel.textContent = ('Replay Level');
+    // gameMsg.appendChild(replayLevel);
     audioLost.play();
-    // setTimeout('startGame()', 5000);
     console.log('lose');
   }
 
@@ -192,11 +192,12 @@ function clearAndCheck(){
 
 function loserOptions(event){
   if(event.target.id === 'highScores'){
+    localStorage.lastGame = JSON.stringify(lastGamePlayed);
+    localStorage.currentScore = JSON.stringify(gameScore);
     window.location.href = 'scores.html';
   }else{
     startGame();
   }
-
 }
 
 function updateNeighbors(){
@@ -278,9 +279,7 @@ function bottomCell(){
 
 
 function winnerWinnerChickenDinner(){
-  if(lastGamePlayed === 0) {
-    gameOne();
-  }
+
   if(lastGamePlayed === 1) {
     gameTwo();
   }
@@ -426,9 +425,6 @@ function gameForever() {
   burstNumber = 4;
   maxTableTotal = 60;
   makeGameTable();
-  if(lastGamePlayed <= 9) {
-    lastGamePlayed = 10;
-  }
   levelUp.textContent = lastGamePlayed;
   console.log('lastGamePlayed' + lastGamePlayed);
 }
