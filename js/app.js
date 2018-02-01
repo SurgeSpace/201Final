@@ -10,7 +10,7 @@ scoreCell.appendChild(score);
 var level = document.getElementById('level');
 var levelUp = document.createElement('ul');
 level.appendChild(levelUp);
-
+var gameMsg = document.getElementById('results');
 
 
 var gameSize = 3;
@@ -35,7 +35,11 @@ var clickCell = 0;
 
 var audio = new Audio('../media/pop.mp3');
 var audioLost = new Audio('../media/gandalf_shallnotpass.wav');
+
 var audioWin = new Audio('../media/austin_yeahbaby.wav');
+var audioWin2 = new Audio('../media/darthvader_taughtyouwell.wav');
+var audioWin3 = new Audio('../media/austin_groovy.wav');
+var audioWin4 = new Audio('../media/woohoo.wav');
 
 var maxTableTotal;
 
@@ -139,12 +143,20 @@ function clearAndCheck(){
     clicksRemaining = 0;
     var rmvTable = document.getElementById('gameTable');
     rmvTable.parentNode.removeChild(rmvTable);
-    var gameMsg = document.getElementById('results');
+    // var gameMsg = document.getElementById('results');
     var lostMsg = document.createElement('p');
     lostMsg.textContent = ('Sorry. You took too many clicks and lost this game.');
     gameMsg.appendChild(lostMsg);
+    var scores = document.createElement('button');
+    scores.setAttribute('id', 'highScores');
+    scores.setAttribute('content', 'High Scores');
+    gameMsg.appendChild(scores);
+    var playAgain = document.createElement('button');
+    playAgain.setAttribute('id', 'replayLevel');
+    playAgain.setAttribute('content', 'Replay Level');
+    gameMsg.appendChild(playAgain);
     audioLost.play();
-    setTimeout('startGame()', 5000);
+    // setTimeout('startGame()', 5000);
     console.log('lose');
   }
 
@@ -161,6 +173,15 @@ function clearAndCheck(){
       setTimeout('updateNeighbors()', 150);
     }
   }
+}
+
+function loserOptions(event){
+  if(event.target.id === 'highScores'){
+    window.location.href = 'scores.html';
+  }else{
+    startGame();
+  }
+
 }
 
 function updateNeighbors(){
@@ -240,8 +261,6 @@ function bottomCell(){
   gameNumbers[clickCell + gameSize] = gameNumbers[clickCell + gameSize] + 1;
 }
 
-
-game.addEventListener('click', updateNumbers);
 
 function winnerWinnerChickenDinner(){
 
@@ -408,6 +427,9 @@ function startGame(){
     gameOne();
   }
 }
+
+game.addEventListener('click', updateNumbers);
+gameMsg.addEventListener('click', loserOptions);
 
 startGame();
 

@@ -11,7 +11,7 @@ Sources Used:
 Flip-Card Animation-https://codepen.io/shayhowe/pen/Fvjnf
 https://www.w3schools.com/cssref/css3_pr_opacity.asp
 
-Audio files from the movies Austin Powers and Lord of the Rings obtained from http://www.mediacollege.com
+Audio files from the movies "Austin Powers", "Lord of the Rings", and "Star Wars" were obtained from http://www.mediacollege.com
 licsening and use of these files can be viewed at http://www.mediacollege.com/home/terms.html
 
 All other sounds obtained from http://soundbible.com and are attribited as follows:
