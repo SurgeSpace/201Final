@@ -216,7 +216,7 @@ function loserOptions(event){
   }
 }
 
-function updateNeighbors() {
+function updateNeighbors() { 
 
   //code for 1st cell
   if(clickCell === 0){
@@ -291,7 +291,6 @@ function topCell(){
 function bottomCell(){
   gameNumbers[clickCell + gameSize] = gameNumbers[clickCell + gameSize] + 1;
 }
-
 
 function winnerWinnerChickenDinner(){
   if(lastGamePlayed === 0) {
