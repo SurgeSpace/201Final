@@ -9,6 +9,7 @@ body {
   background: rgb(194, 194, 194) linear-gradient(to bottom right, rgb(77, 71, 71), rgb(194, 194, 194));
   font-family: ‘Nunito’, sans-serif;
   background-attachment: fixed;
+  color: white;
 }
   
 header {
