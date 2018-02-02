@@ -1,7 +1,12 @@
 # 201Final
-Codefellows 201 final project
+1/27/18 Codefellows 201 final project 
 
-Day 1: APPROVED BY ALLIE
+2/2/18 Version 1.0 completed
+
+Development Team: Jeremy Crawford, Josiah Green, Steve Starwalt, Rebecca Prows. 
+
+The Game: 
+An interactive game that uses numbers and bubbles, the goal is to clear the board. Version 1.0 has 9 levels with increasing dificulties. Level 9 repeats until the user decides to quit.
 
 reset.css was obtained from http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
