@@ -31,15 +31,17 @@ gameMsg.appendChild(replayLevel);
 var gameSize = 3;
 var topIndex = 2;
 var tableTotal = 0;
+var maxTableTotal;
 var gameNumbers = [];
 var gameIndex = 0;
 var cellNumber = -1;
 var clearedCells = [];
 var clicksRemaining = 0;
 var burstNumber = 3;
+var lastGamePlayed;
 var gameScore = 0;
 score.textContent = gameScore;
-var lastGamePlayed;
+
 
 var topCells = [];
 var rightCells = [];
@@ -71,9 +73,6 @@ function soundOff(){
     localStorage.sounds = JSON.stringify(true);
   }
 }
-
-var maxTableTotal;
-
 function randomNumber() {
   return Math.floor(Math.random() * Math.floor(burstNumber) + 1);
 }
@@ -153,10 +152,16 @@ function clickTracker(){
 }
 
 function clearAndCheck(){
+  clear();
+  check();
+  blowEmUp();
+}
+
+function clear() {
   if(clearedCells.length === gameNumbers.length){
     var gameWin = document.getElementById('results');
     var winMsg = document.createElement('p');
-    winMsg.textContent = ('You have beaten this level. On to the next!');
+    winMsg.textContent = ('You win! Next Level');
     gameWin.appendChild(winMsg);
     lastGamePlayed += 1;
     gameScore += clicksRemaining * 100;
@@ -168,23 +173,24 @@ function clearAndCheck(){
     setTimeout('startGame()', 2500);
     console.log('win');
   }
-
+}
+function check() {
   if(clicksRemaining < 0 && clearedCells.length < gameNumbers.length){
     clickCounter.textContent = ('0');
     var rmvTable = document.getElementById('gameTable');
     rmvTable.parentNode.removeChild(rmvTable);
-    // var gameMsg = document.getElementById('results');
     var lostMsg = document.createElement('p');
     lostMsg.setAttribute('id', 'lostMsg');
-    lostMsg.textContent = ('Sorry. You took too many clicks and lost this game.');
+    lostMsg.textContent = ('Sorry, all out of clicks.');
     gameMsg.appendChild(lostMsg);
     scores.setAttribute('id', 'highScores');
     replayLevel.setAttribute('id', 'replayLevel');
-    localStorage.currentScore = JSON.stringify(gameScore);
     audioLost.play();
     console.log('lose');
   }
-
+}
+  
+function blowEmUp () {
   for(var i in gameNumbers){
     if(gameNumbers[i] > burstNumber){
       clickCell = parseInt(i);
@@ -210,7 +216,7 @@ function loserOptions(event){
   }
 }
 
-function updateNeighbors(){
+function updateNeighbors() {
 
   //code for 1st cell
   if(clickCell === 0){
@@ -271,7 +277,6 @@ function updateNeighbors(){
     gameNumbers[clearedCells[i]] = 0;
   }
   console.log('after' + gameNumbers);
-  // clearAndCheck();
 }
 
 function rightCell(){
@@ -332,12 +337,12 @@ function gameOne() {
   makeGameTable();
   lastGamePlayed = 0;
   levelUp.textContent = 1;
-  console.log('lastGamePlayed' + lastGamePlayed);
+  console.log('lastGamePlayed ' + lastGamePlayed);
 }
 function gameTwo() {
   gameSize = 4;
   topIndex = gameSize - 1;
-  clicksRemaining = 15;
+  clicksRemaining = 14;
   clickCounter.textContent = clicksRemaining;
   burstNumber = 3;
   pop.textContent = burstNumber + 1;
