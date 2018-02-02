@@ -172,18 +172,23 @@ table td:nth-of-type(9){
   
 /* game load animation end */
 a{
-  font-size: 18px;
+  font-size: 20px;
   color: white;
   text-decoration: none;
   position: fixed;
   top: 50px;
   left: 20px;
 }
+
 #mute {
-  font-size: 18px;
+  all: unset;
+}
+
+#mute {
+  font-size: 20px;
   color: white;
   position: fixed;
-  top: 70px;
+  top: 78px;
   left: 20px;
 }
 
