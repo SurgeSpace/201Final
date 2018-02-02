@@ -7,11 +7,26 @@ clicksLeft.appendChild(clickCounter);
 var scoreCell = document.getElementById('currentScore');
 var score = document.createElement('ul');
 scoreCell.appendChild(score);
+var popValue = document.getElementById('popValue');
+var pop = document.createElement('ul');
+popValue.appendChild(pop);
 var level = document.getElementById('level');
 var levelUp = document.createElement('ul');
 level.appendChild(levelUp);
+var gameMsg = document.getElementById('results');
+
+var scores = document.createElement('button');
+scores.setAttribute('id', 'highScoresNot');
+scores.textContent = ('High Scores');
+scores.style.visibility = ('none');
+gameMsg.appendChild(scores);
 
 
+var replayLevel = document.createElement('button');
+replayLevel.setAttribute('id', 'replayLevelNot');
+replayLevel.textContent = ('Replay Level');
+replayLevel.style.visibility = ('none');
+gameMsg.appendChild(replayLevel);
 
 var gameSize = 3;
 var topIndex = 2;
@@ -33,11 +48,31 @@ var leftCells = [];
 
 var clickCell = 0;
 
+var sounds = []; 
+
 var audio = new Audio('../media/pop.mp3');
-var audioLost = new Audio('../media/lostGame.mp3');
+sounds.push(audio);
+var audioLost = new Audio('../media/gandalf_shallnotpass.wav');
+sounds.push(audioLost);
+
+var audioWin = new Audio('../media/austin_yeahbaby.wav');
+sounds.push(audioWin);
+var audioWin2 = new Audio('../media/darthvader_taughtyouwell.wav');
+sounds.push(audioWin2);
+var audioWin3 = new Audio('../media/austin_groovy.wav');
+sounds.push(audioWin3);
+var audioWin4 = new Audio('../media/woohoo.wav');
+sounds.push(audioWin4);
+var mute = document.getElementById('mute');
+
+function soundOff(){
+  for(var i in sounds){
+    sounds[i].muted = true;
+    localStorage.sounds = JSON.stringify(true);
+  }
+}
 
 var maxTableTotal;
-
 
 function randomNumber() {
   return Math.floor(Math.random() * Math.floor(burstNumber) + 1);
@@ -112,34 +147,40 @@ function updateNumbers(event){
   clearAndCheck();
 }
 
-function clickTracker(){
+function clickTracker(){  
   clicksRemaining = clicksRemaining - 1;
   clickCounter.textContent = clicksRemaining;
 }
 
 function clearAndCheck(){
   if(clearedCells.length === gameNumbers.length){
-    // var gameMsg = document.getElementById('gameMsg');
-    // var winMsg = document.createElement('p');
-    // winMsg.textContent = ('Congratulations!! You have beaten this level.');
-    // gameMsg.appendChild(winMsg);
+    var gameWin = document.getElementById('results');
+    var winMsg = document.createElement('p');
+    winMsg.textContent = ('You have beaten this level. On to the next!');
+    gameWin.appendChild(winMsg);
     lastGamePlayed += 1;
     gameScore += clicksRemaining * 100;
     console.log(gameScore);
     clearedCells = [];
     localStorage.lastGame = JSON.stringify(lastGamePlayed);
     localStorage.currentScore = JSON.stringify(gameScore);
+    audioWin.play();
+    setTimeout('startGame()', 2500);
     console.log('win');
-    startGame();
   }
 
   if(clicksRemaining < 0 && clearedCells.length < gameNumbers.length){
+    clickCounter.textContent = ('0');
     var rmvTable = document.getElementById('gameTable');
     rmvTable.parentNode.removeChild(rmvTable);
-    var gameMsg = document.getElementById('results');
+    // var gameMsg = document.getElementById('results');
     var lostMsg = document.createElement('p');
+    lostMsg.setAttribute('id', 'lostMsg');
     lostMsg.textContent = ('Sorry. You took too many clicks and lost this game.');
     gameMsg.appendChild(lostMsg);
+    scores.setAttribute('id', 'highScores');
+    replayLevel.setAttribute('id', 'replayLevel');
+    localStorage.currentScore = JSON.stringify(gameScore);
     audioLost.play();
     console.log('lose');
   }
@@ -153,9 +194,19 @@ function clearAndCheck(){
       gameNumbers[i] = 0;
       gameScore = gameScore + 100;
       score.textContent = gameScore;
-      setTimeout('updateNeighbors()', 100);
       audio.play();
+      setTimeout('updateNeighbors()', 150);
     }
+  }
+}
+
+function loserOptions(event){
+  if(event.target.id === 'highScores'){
+    localStorage.lastGame = JSON.stringify(lastGamePlayed);
+    localStorage.currentScore = JSON.stringify(gameScore);
+    window.location.href = 'scores.html';
+  }else{
+    startGame();
   }
 }
 
@@ -237,10 +288,10 @@ function bottomCell(){
 }
 
 
-game.addEventListener('click', updateNumbers);
-
 function winnerWinnerChickenDinner(){
-
+  if(lastGamePlayed === 0) {
+    gameOne();
+  }
   if(lastGamePlayed === 1) {
     gameTwo();
   }
@@ -276,6 +327,7 @@ function gameOne() {
   clicksRemaining = 8;
   clickCounter.textContent = clicksRemaining;
   burstNumber = 3;
+  pop.textContent = burstNumber + 1;
   maxTableTotal = 18;
   makeGameTable();
   lastGamePlayed = 0;
@@ -288,6 +340,7 @@ function gameTwo() {
   clicksRemaining = 15;
   clickCounter.textContent = clicksRemaining;
   burstNumber = 3;
+  pop.textContent = burstNumber + 1;
   maxTableTotal = 32;
   makeGameTable();
   lastGamePlayed = 1;
@@ -300,6 +353,7 @@ function gameThree() {
   clicksRemaining = 20;
   clickCounter.textContent = clicksRemaining;
   burstNumber = 3;
+  pop.textContent = burstNumber + 1;
   maxTableTotal = 50;
   makeGameTable();
   lastGamePlayed = 2;
@@ -312,6 +366,7 @@ function gameFour() {
   clicksRemaining = 6;
   clickCounter.textContent = clicksRemaining;
   burstNumber = 3;
+  pop.textContent = burstNumber + 1;
   maxTableTotal = 18;
   makeGameTable();
   lastGamePlayed = 3;
@@ -324,6 +379,7 @@ function gameFive() {
   clicksRemaining = 13;
   clickCounter.textContent = clicksRemaining;
   burstNumber = 3;
+  pop.textContent = burstNumber + 1;
   maxTableTotal = 32;
   makeGameTable();
   lastGamePlayed = 4;
@@ -336,6 +392,7 @@ function gameSix() {
   clicksRemaining = 18;
   clickCounter.textContent = clicksRemaining;
   burstNumber = 3;
+  pop.textContent = burstNumber + 1;
   maxTableTotal = 50;
   makeGameTable();
   lastGamePlayed = 5;
@@ -348,6 +405,7 @@ function gameSeven() {
   clicksRemaining = 10;
   clickCounter.textContent = clicksRemaining;
   burstNumber = 4;
+  pop.textContent = burstNumber + 1;
   maxTableTotal = 24;
   makeGameTable();
   lastGamePlayed = 6;
@@ -360,6 +418,7 @@ function gameEight() {
   clicksRemaining = 16;
   clickCounter.textContent = clicksRemaining;
   burstNumber = 4;
+  pop.textContent = burstNumber + 1;
   maxTableTotal = 44;
   makeGameTable();
   lastGamePlayed = 7;
@@ -372,6 +431,7 @@ function gameNine() {
   clicksRemaining = 25;
   clickCounter.textContent = clicksRemaining;
   burstNumber = 4;
+  pop.textContent = burstNumber + 1;
   maxTableTotal = 64;
   makeGameTable();
   lastGamePlayed = 8;
@@ -384,15 +444,18 @@ function gameForever() {
   clicksRemaining = 25;
   clickCounter.textContent = clicksRemaining;
   burstNumber = 4;
+  pop.textContent = burstNumber + 1;
   maxTableTotal = 60;
   makeGameTable();
   levelUp.textContent = lastGamePlayed;
   console.log('lastGamePlayed' + lastGamePlayed);
 }
 
-
-
 function startGame(){
+  var volume = JSON.parse(localStorage.getItem('sounds'));
+  if(volume === true){
+    soundOff();
+  }
   if(localStorage.lastGame || localStorage.currentScore) {
     lastGamePlayed = JSON.parse(localStorage.getItem('lastGame'));
     console.log('last game ' + lastGamePlayed);
@@ -404,6 +467,11 @@ function startGame(){
     gameOne();
   }
 }
+
+game.addEventListener('click', updateNumbers);
+replayLevel.addEventListener('click', loserOptions);
+scores.addEventListener('click', loserOptions);
+mute.addEventListener('click', soundOff);
 
 startGame();
 
