@@ -49,7 +49,7 @@ p {
   border-radius: 24px;
   width: 62%;
   font-size: 19px;
-  padding: 30px;
+  padding: 39px;
   text-align: center;
   margin: 50px auto;
 }
@@ -176,6 +176,38 @@ a{
   position: fixed;
   top: 50px;
   left: 20px;
+}
+#mute {
+  font-size: 18px;
+  color: white;
+  position: fixed;
+  top: 70px;
+  left: 20px;
+}
+
+#highScoresNot {
+  all: unset;
+}
+
+#highScoresNot {
+  height: 0px;
+  width: 0px;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+
+#replayLevelNot {
+ all: unset;
+}
+
+#replayLevelNot {
+  height: 0px;
+  width: 0px;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
 
 #highScores {
   all: unset;
@@ -193,8 +225,8 @@ a{
   border-radius: 10px;
   text-rendering: initial;
   position: relative;
-  top: 132px;
-  left: 142px;
+  top: 144px;
+  left: 193px;
  }
  #replayLevel {
    all: unset;
@@ -212,6 +244,8 @@ a{
    border-radius: 10px;
    text-rendering: initial;
    position: relative;
-   top: 132px;
-   left: 317px;
+   top: 144px;
+   left: 235px;
  }
+  
+
