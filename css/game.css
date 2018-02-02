@@ -173,7 +173,7 @@ table td:nth-of-type(9){
 /* game load animation end */
 a{
   font-size: 20px;
-  color: white;
+  color: rgba(255, 255, 255, 0.87);
   text-decoration: none;
   position: fixed;
   top: 50px;
@@ -186,10 +186,10 @@ a{
 
 #mute {
   font-size: 20px;
-  color: white;
+  color: rgba(255, 255, 255, 0.87);
   position: fixed;
-  top: 78px;
-  left: 20px;
+  top: 50px;
+  right: 20px;
 }
 
 #highScoresNot {
