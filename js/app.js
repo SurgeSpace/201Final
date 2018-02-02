@@ -443,8 +443,6 @@ function gameForever() {
   console.log('lastGamePlayed' + lastGamePlayed);
 }
 
-
-
 function startGame(){
   if(localStorage.lastGame || localStorage.currentScore) {
     lastGamePlayed = JSON.parse(localStorage.getItem('lastGame'));
