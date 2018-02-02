@@ -24,11 +24,11 @@ ul {
   padding-bottom: 30px;
 }
 .instruction-section-titles {
-font-size: 30px;
-color:  #ffe400;
-text-align: center;
-padding-top: 5px;
-padding-bottom: 5px;
+  font-size: 30px;
+  color:  #ffe400;
+  text-align: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 li {
@@ -38,7 +38,7 @@ li {
 
 }
 
-div {
+#wtf {
   background: rgba(0, 0, 0, .5);
   max-width: 70%;
   margin: auto;
@@ -49,7 +49,7 @@ div {
 }
 button {
   border-radius: 10px;
-  background-color: #ffe600d7;
+  background-color: #ffe600e5;
   border: none;
   color: white;
   text-align: center;
@@ -59,6 +59,11 @@ button {
   transition: all 0.5s;
   cursor: pointer;
   margin: 0px auto;
+}
+
+#fuck {
+  width: 100%;
+  text-align: center;
 }
 
 button a {
