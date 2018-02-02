@@ -150,6 +150,7 @@ function clickLogOut(e) {
   localStorage.lastGame = 0;
   localStorage.currentScore = 0;
   localStorage.firstName = '';
+  location.href = '../index.html';
 }
 
 refreshButton.addEventListener('click', clickRefreshButton);
