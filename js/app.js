@@ -180,15 +180,7 @@ function clearAndCheck(){
     gameMsg.appendChild(lostMsg);
     scores.setAttribute('id', 'highScores');
     replayLevel.setAttribute('id', 'replayLevel');
-    // var scores = document.createElement('button');
-    // scores.setAttribute('id', 'highScores');
-    // scores.textContent = ('High Scores');
-    // // scores.style.visibility = ('none');
-    // gameMsg.appendChild(scores);
-    // var replayLevel = document.createElement('button');
-    // replayLevel.setAttribute('id', 'replayLevel');
-    // replayLevel.textContent = ('Replay Level');
-    // gameMsg.appendChild(replayLevel);
+    localStorage.currentScore = JSON.stringify(gameScore);
     audioLost.play();
     console.log('lose');
   }
@@ -462,7 +454,6 @@ function startGame(){
   if(volume === true){
     soundOff();
   }
-  // localStorage.currentScore = JSON.stringify(gameScore);
   if(localStorage.lastGame || localStorage.currentScore) {
     lastGamePlayed = JSON.parse(localStorage.getItem('lastGame'));
     console.log('last game ' + lastGamePlayed);
