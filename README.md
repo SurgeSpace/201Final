@@ -15,6 +15,7 @@ reset.css was obtained from http://meyerweb.com/eric/tools/css/reset/
 Sources Used:
 Flip-Card Animation-https://codepen.io/shayhowe/pen/Fvjnf
 https://www.w3schools.com/cssref/css3_pr_opacity.asp
+Favicon http://www.favicon.cc/?action=icon&file_id=525751
 
 Audio files from the movies "Austin Powers", "Lord of the Rings", and "Star Wars" were obtained from http://www.mediacollege.com
 licsening and use of these files can be viewed at http://www.mediacollege.com/home/terms.html
