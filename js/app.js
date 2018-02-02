@@ -45,16 +45,30 @@ var leftCells = [];
 
 var clickCell = 0;
 
+var sounds = []; 
+
 var audio = new Audio('../media/pop.mp3');
+sounds.push(audio);
 var audioLost = new Audio('../media/gandalf_shallnotpass.wav');
+sounds.push(audioLost);
 
 var audioWin = new Audio('../media/austin_yeahbaby.wav');
+sounds.push(audioWin);
 var audioWin2 = new Audio('../media/darthvader_taughtyouwell.wav');
+sounds.push(audioWin2);
 var audioWin3 = new Audio('../media/austin_groovy.wav');
+sounds.push(audioWin3);
 var audioWin4 = new Audio('../media/woohoo.wav');
+sounds.push(audioWin4);
+var mute = document.getElementById('mute');
+
+function soundOff(){
+  for(var i in sounds){
+    sounds[i].muted = true;
+  }
+}
 
 var maxTableTotal;
-
 
 function randomNumber() {
   return Math.floor(Math.random() * Math.floor(burstNumber) + 1);
@@ -447,6 +461,7 @@ function startGame(){
 game.addEventListener('click', updateNumbers);
 replayLevel.addEventListener('click', loserOptions);
 scores.addEventListener('click', loserOptions);
+mute.addEventListener('click', soundOff);
 
 startGame();
 
