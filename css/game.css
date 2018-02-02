@@ -1,3 +1,7 @@
+*:focus {
+  outline: none;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -72,17 +76,15 @@ ul {
 }
 
 ul li {
-  padding: 0px 30px;
+  padding: 0px 20px;
   display: inline-block;
   color: #ffe400;
+  text-shadow: 2px 1px 1px rgba(82, 82, 82, 0.863);
+  font-size: 18px;
 }
 
 ul li:first-child {
-  padding-right: 44px;
-}
-
-ul li:nth-child(4) {
-  color: white;
+  padding-right: 30px;
 }
 
 button {  

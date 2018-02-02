@@ -1,10 +1,14 @@
+html {
+  height: 100%;
+}
+
 body {
+  height: 100%;
   margin: 0;
   padding: 0;
-  height: 1000px;
-  background: linear-gradient(to bottom right, rgb(77, 71, 71), rgb(194, 194, 194));
-  font-family: 'Nunito', sans-serif; 
-  text-align: center;
+  background: rgb(194, 194, 194) linear-gradient(to bottom right, rgb(77, 71, 71), rgb(194, 194, 194));
+  font-family: ‘Nunito’, sans-serif;
+  background-attachment: fixed;
 }
 
 header {

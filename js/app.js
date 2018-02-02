@@ -7,6 +7,9 @@ clicksLeft.appendChild(clickCounter);
 var scoreCell = document.getElementById('currentScore');
 var score = document.createElement('ul');
 scoreCell.appendChild(score);
+var popValue = document.getElementById('popValue');
+var pop = document.createElement('ul');
+popValue.appendChild(pop);
 var level = document.getElementById('level');
 var levelUp = document.createElement('ul');
 level.appendChild(levelUp);
@@ -329,6 +332,7 @@ function gameOne() {
   clicksRemaining = 8;
   clickCounter.textContent = clicksRemaining;
   burstNumber = 3;
+  pop.textContent = burstNumber + 1;
   maxTableTotal = 18;
   makeGameTable();
   lastGamePlayed = 0;
@@ -341,6 +345,7 @@ function gameTwo() {
   clicksRemaining = 15;
   clickCounter.textContent = clicksRemaining;
   burstNumber = 3;
+  pop.textContent = burstNumber + 1;
   maxTableTotal = 32;
   makeGameTable();
   lastGamePlayed = 1;
@@ -353,6 +358,7 @@ function gameThree() {
   clicksRemaining = 20;
   clickCounter.textContent = clicksRemaining;
   burstNumber = 3;
+  pop.textContent = burstNumber + 1;
   maxTableTotal = 50;
   makeGameTable();
   lastGamePlayed = 2;
@@ -365,6 +371,7 @@ function gameFour() {
   clicksRemaining = 6;
   clickCounter.textContent = clicksRemaining;
   burstNumber = 3;
+  pop.textContent = burstNumber + 1;
   maxTableTotal = 18;
   makeGameTable();
   lastGamePlayed = 3;
@@ -377,6 +384,7 @@ function gameFive() {
   clicksRemaining = 13;
   clickCounter.textContent = clicksRemaining;
   burstNumber = 3;
+  pop.textContent = burstNumber + 1;
   maxTableTotal = 32;
   makeGameTable();
   lastGamePlayed = 4;
@@ -389,6 +397,7 @@ function gameSix() {
   clicksRemaining = 18;
   clickCounter.textContent = clicksRemaining;
   burstNumber = 3;
+  pop.textContent = burstNumber + 1;
   maxTableTotal = 50;
   makeGameTable();
   lastGamePlayed = 5;
@@ -401,6 +410,7 @@ function gameSeven() {
   clicksRemaining = 10;
   clickCounter.textContent = clicksRemaining;
   burstNumber = 4;
+  pop.textContent = burstNumber + 1;
   maxTableTotal = 24;
   makeGameTable();
   lastGamePlayed = 6;
@@ -413,6 +423,7 @@ function gameEight() {
   clicksRemaining = 16;
   clickCounter.textContent = clicksRemaining;
   burstNumber = 4;
+  pop.textContent = burstNumber + 1;
   maxTableTotal = 44;
   makeGameTable();
   lastGamePlayed = 7;
@@ -425,6 +436,7 @@ function gameNine() {
   clicksRemaining = 25;
   clickCounter.textContent = clicksRemaining;
   burstNumber = 4;
+  pop.textContent = burstNumber + 1;
   maxTableTotal = 64;
   makeGameTable();
   lastGamePlayed = 8;
@@ -437,6 +449,7 @@ function gameForever() {
   clicksRemaining = 25;
   clickCounter.textContent = clicksRemaining;
   burstNumber = 4;
+  pop.textContent = burstNumber + 1;
   maxTableTotal = 60;
   makeGameTable();
   levelUp.textContent = lastGamePlayed;
