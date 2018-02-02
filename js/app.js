@@ -65,6 +65,7 @@ var mute = document.getElementById('mute');
 function soundOff(){
   for(var i in sounds){
     sounds[i].muted = true;
+    localStorage.sounds = JSON.stringify(true);
   }
 }
 
@@ -161,7 +162,7 @@ function clearAndCheck(){
     localStorage.lastGame = JSON.stringify(lastGamePlayed);
     localStorage.currentScore = JSON.stringify(gameScore);
     audioWin.play();
-    setTimeout('startGame()', 5000);
+    setTimeout('startGame()', 2500);
     console.log('win');
   }
 
@@ -444,6 +445,11 @@ function gameForever() {
 }
 
 function startGame(){
+  var volume = JSON.parse(localStorage.getItem('sounds'));
+  if(volume === true){
+    soundOff();
+  }
+  // localStorage.currentScore = JSON.stringify(gameScore);
   if(localStorage.lastGame || localStorage.currentScore) {
     lastGamePlayed = JSON.parse(localStorage.getItem('lastGame'));
     console.log('last game ' + lastGamePlayed);
